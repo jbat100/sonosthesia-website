@@ -2,22 +2,53 @@
 
 .container
 
-
-
     h2 Objectives
 
-    p The proposed approach is to extend existing graphics/physics/VR engines (such as Unity, Unreal Game Engine, Blender) and digital audio workstations (such as Logic Pro, Ableton Live or Pro Tools, through the use of VST or AU plugins and custom built processors and synthesizers), allowing them to communicate with or control each other via open, documented protocols (built over OSC). Using this approach, the project can make use of cutting edge specialised software, and their  and does not
+    p Sonosthesia is a highly inter-disciplinary project, and although its mission statement is relatively clear, specific objectives will be in constant evolution. Current objectives revolve around allowing interactions between two major classes of software tools, each providing a large chunk of the functionality we need.
 
-    p By exploiting emerging interaction techniques such as virtual and augmented reality. These techniques show a huge potential for creating highly engaging multi-modal art forms. The driving idea behind sonosthesia is that virtual worlds can become performance spaces in their own right within which performers can interact with purposely designed virtual objects, with all the power of modern physics engines providing organic, lifelike experiences, and the flexibility to configure these objects as audio/visual controllers.
+    p The first is game engines (such as Unity, Unreal Game Engine, Blender) used for game design, CGI, HCI and virtual reality. They are essentially a combination of a graphics engine, a physics engine, and some additional tools specifically aimed at facilitating creating 2D/3D/VR experiences. One thing game engines are not good at however is real-time musical sound control as most games do not require much beyond playing spatialised pre-recorded sounds, sonic atmosphere generation, perhaps rudimentary sonification.
+
+    p This is where the second class of software tools comes into play, namely digital audio workstations (such as Logic Pro, Ableton Live or Pro Tools). These are used for music composition and production, sound design, and most importantly live musical performances. They are particularly good at controlling sound synthesis, processing audio streams, sequencing notes, handling large sound libraries, loops, complicated audio setups and a lot more.
+
+    p These tools are very mature and have a very large existing, highly skilled user base and between them provide a great deal of the functionality that we need. What is missing however is a language for them to interact with each other, sending each other information and control messages.
+
+    p The final objective is for virtual worlds to become performance spaces in their own right within which performers can interact with purposely designed virtual objects, with all the power of modern physics engines providing organic, lifelike experiences, and the flexibility to configure these objects as effective media controllers.
+
+    h2 Concepts
+
+    p Firstly, the project aims to document core concepts and ideas independently of any software implementation.
+
+    ul
+        li Extracting sound descriptors  to generate visual content (both in 2 and 3 dimensions)
+        li Using object manipulations in VR to generate sound control data.
+
+    p Next, we aim to provide a common language for software components to communicate with each other, specifically
+
+    ul
+        li Develop effective and generic protocols to provide analysis data and control data, allowing different software components to interact with each other in meaningful ways.
+        li Analyse audio/MIDI streams in real-time and broadcast the results
+        li Create
+        li
+        li Gather, describe and develop ideas for audio/visual content generation paradigms
+
+
+    p Emerging interaction techniques such as virtual and augmented reality have a huge potential for creating highly engaging multi-modal art forms.
+
+    p One of the driving idea behind sonosthesia is that virtual worlds can become performance spaces in their own right within which performers can interact with purposely designed virtual objects, with all the power of modern physics engines providing organic, lifelike experiences, and the flexibility to configure these objects as artistic controllers.
 
     p
 
 
-    ul
-        li Gather, describe and develop ideas for audio/visual content generation paradigms
+
 
     p The project provides a set of  interoperable tools, plugins and libraries which allow existing software to interact, and to provide meaningful abstractions for mapping different domains.
 
     p It primarily aims to allowing existing software to interact with each other in ways which - open approach which allows it to interface with
+
+    h2 Approach
+
+    p The proposed approach is to extend existing graphics/physics/VR engines (such as Unity, Unreal Game Engine, Blender)
+
+    p  Provide extensions to digital audio workstations (such as Logic Pro, Ableton Live or Pro Tools, through the use of VST or AU plugins and custom built processors and synthesizers), to provide real-time sound descriptors, gather automation and control (MIDI/OSC) data, and broadcast this information on the local network along with control information describing intended effects.  allowing them to communicate with or control each other via open, documented protocols (built over OSC). Using this approach, the project can make use of cutting edge specialised software, and their  and does not
 
     h2 Concepts
