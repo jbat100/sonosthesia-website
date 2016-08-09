@@ -3,13 +3,14 @@ html
     head
         != partial("_partials/head")
 
-    body
+    body.background-fill
 
         header
             != partial("_partials/header")
 
         main
-            != yield
+            div
+                != yield
 
-        //footer
+        footer
             != partial("_partials/footer")

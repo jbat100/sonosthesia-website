@@ -17,9 +17,10 @@ body{
 }
 
 footer{
+  background-color: rgba(230, 245, 255, 0.0);
   margin: @grid-gutter-width 0 0 0;
   padding: (@grid-gutter-width / 2) 0;
-  border-top: 1px solid @well-border;
+  border-top: 1px solid darken(@well-border, 6%);
   text-align: center;
 }
 
@@ -54,4 +55,8 @@ article.article-docs{
   img{
     width: 100%;
   }
+}
+
+.background-fill {
+  background: linear-gradient(to right, rgba(255,255,255,0.5) 15%,rgba(245,255,255,0.7) 30%,rgba(245,245,255,0.8) 85%,rgba(186,228,255,0.5) 100%), url('../images/background1.jpg');
 }
