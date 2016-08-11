@@ -6,57 +6,58 @@
 
     h2 Next Generation Interactive Art
 
-    p Sonosthesia is a highly inter-disciplinary project, and although its mission statement is relatively clear, specific objectives will be in constant evolution. Currently, two main concepts are explored, although the aim is to broaden horizons as much as possible. A brief overview is given here, ideas for Sonosthesia are described in more detail in the
+    p Sonosthesia is a highly inter-disciplinary project which aims to merge many traditionally separate fields together. A brief overview of the driving ideas is given here, they are described in more detail in the #[a(href="../concepts") concepts] section. Central to Sonosthesia is the idea of control I/O (input/output). In simple terms control I/O just means that different software components doing very different things, communicate with each other (and stimulate each other) by sending and receiving control messages.
 
-    h3 Sound as a Controller
+    p A software component receives a control stream from a source and reacts to it (producing musical notes, timbre changes, graphical textures, mesh deformations, physical forces in a simulation, or whatever you can imagine). It can then generate descriptors of the content it has generated and feed them into a new control stream of its own. This stream can be piped to another software component. The next software component in the pipeline receives this control data as input and the can in turn generate content and an associated descriptor output control stream. This control stream can be piped into yet another software component, or several, or looped back to the first component, creating an infinite software control loop. Concrete examples may help.
 
-    p Extracting sound descriptors  to generate visual content (both in 2 and 3 dimensions). Analyse audio/MIDI streams in real-time and broadcast the results.
+    h3 VR/AR Control I/O
 
-    h3 VR as a Controller
+    p Digital art performance has traditionally suffered from the low-dimensionality of typical control devices (sliders, knobs, keys, sometimes light-beams, touch-tables), these all have one or two degrees of freedom and fall short of exploiting the huge potential of the human brain, which is sometimes revealed during virtuosic performances on acoustic instruments. Gestural control has been a subject of research for some time but proposed interfaces often suffer from a lack of context, that is they are performed in empty space while we expect the effect of our gestures to depend on the objects they enter into contact with.
 
-    p Using object manipulations in VR to generate sound control data. Emerging interaction techniques such as virtual and augmented reality have a huge potential for creating highly engaging multi-modal art forms.
+    p Emerging technology such as virtual and augmented reality have a huge potential for supporting new highly engaging interaction paradigms, which address these issues. Humans understand the world in three dimensions. A huge part of the brain is dedicated to the fine control of the hands and to real-world object manipulation allowing incredible levels of potential dexterity given enough practice and experience. VR has the potential to allow performers to exploit this great resource, by emulating real-world object manipulation. The added advantage is of course that we as programmers have total freedom in defining the way these manipulations map to control information (for sound, graphics, or anything else).
+
+    h3 Musical Control I/O
+
+    p Another driving idea behind the project is that of sound as a control mechanism. This idea is already in use in a number of common situations, concert lighting for example is often partially guided by the sound produced by a musical performance, music players often have a visualiser option which generate graphical eccentricities driven by sound characteristics, typically its time varying spectrum. These setups often only exploit the final mix of the musical performance, which has lost a lot of the information used to produce it.
+
+    p In order to push this idea further musicians would ideally be able to create sonic meta-data directly from within their working environment, where individual instrument channels can easily be processed and analysed separately, and where control information such as MIDI notes or controllers, and plugin automation data is accessible. Musicians should be able to transform these sound descriptors into configurable control messages and broadcast these to any number of hosts on the local network (and beyond).
+
+    h3 Artificial Intelligence Control I/O
 
 
     h3 A Vision for the Future
 
-    p The final objective is for virtual worlds to become performance spaces in their own right within which performers can interact with purposely designed virtual objects, with all the power of modern physics engines providing organic, lifelike experiences, and the flexibility to configure these objects as effective media controllers. Collaboration, Audience Immersion.
-
-
-    h2 Approach
-
-    p The first is game engines (such as Unity, Unreal Game Engine, Blender) used for game design, CGI, HCI and virtual reality. They are essentially a combination of a graphics engine, a physics engine, and some additional tools specifically aimed at facilitating creating 2D/3D/VR gaming experiences. One thing game engines are not good at however is real-time musical sound control as most games do not require much beyond playing spatialised pre-recorded sounds, sonic atmosphere generation, perhaps rudimentary sonification.
-
-    p This is where the second class of software tools comes into play, namely digital audio workstations (such as Logic Pro, Ableton Live or Pro Tools). These are used for music composition and production, sound design, and most importantly live musical performances. They are particularly good at controlling sound synthesis, processing audio streams, creating processing pipelines, sequencing notes, handling large sound libraries, loops, complicated audio setups, routing, mixing and a lot more.
-
-    p These tools are very mature and have a very large existing, highly skilled user base and between them provide a great deal of the functionality that we need. What is missing however is a language for them to interact with each other, sending each other information and control messages.
-
-
-
-
-
-    h2 Concepts
+    p Above are only two examples of a central The final objective is for virtual worlds to become performance spaces in their own right within which performers can interact with purposely designed virtual objects, with all the power of modern physics engines providing organic, lifelike experiences, and the flexibility to configure these objects as effective media controllers. Collaboration, Audience Immersion.
 
     p Gather, describe and develop ideas for audio/visual content generation paradigms. The project provides a set of  interoperable tools, plugins and libraries which allow existing software to interact, and to provide meaningful abstractions for mapping different domains.
 
 
+    h2 Technical Approach
+
+    h3 Software Extension
+
+    p Current objectives (hopefully there will be more soon), revolve around the extension of two major classes of software components.
+
+    p These tools are very mature and have a very large existing, highly skilled user base and between them provide a great deal of the functionality that we need. What is missing however is a language for them to interact with each other, sending each other information and control messages.
 
 
+    h3 Scripts as Game Engine Extensions
 
+    p The first is game engines (such as Unity, Unreal Game Engine, Blender). These tools are used for game design, CGI, HCI and virtual reality. They are essentially a combination of a graphics engine, a physics engine, and some additional tools specifically aimed at facilitating creating 2D/3D/VR gaming experiences. These tools can be extended using their extensive scripting APIs.
 
+    h3 Audio/MIDI Plugins (VST/AU) as DAW Extensions
 
-
+    p One thing game engines are not good at is real-time musical sound control as most games do not require much beyond playing spatialised pre-recorded sounds, sonic atmosphere generation, perhaps rudimentary sonification. Enter the second class of software tools, namely digital audio workstations (such as Logic Pro, Ableton Live or Pro Tools). These tools are used for music composition and production, sound design, and most importantly live musical performances. They are particularly good at controlling sound synthesis, processing audio streams, creating processing pipelines, sequencing notes, handling large sound libraries, loops, complicated audio setups, routing, mixing and a lot more. through the use of plugins (VST and AU)
 
     h3 Control Protocols Based on OSC
 
     p We aim to provide a common language for software components to communicate. Specifically, develop effective and generic protocols to provide analysis data and control data, allowing different software components to interact with each other in meaningful ways.
 
 
-    h3 Audio/MIDI Plugins (VST/AU) as DAW extensions
 
-    p Provide extensions to digital audio workstations (such as Logic Pro, Ableton Live or Pro Tools, through the use of VST or AU plugins and custom built processors and synthesizers), to provide real-time sound descriptors, gather automation and control (MIDI/OSC) data, and broadcast this information on the local network along with control information describing intended effects.
 
-    h3 Scripts as VR engine extensions
 
-    p Extend existing graphics/physics/VR engines (such as Unity, Unreal Game Engine, Blender) using their extensive scripting APIs.
+
+
 
 
