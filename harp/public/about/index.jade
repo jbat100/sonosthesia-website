@@ -3,12 +3,28 @@
 .container
 
 
-
     h2 Next Generation Interactive Art
 
-    p Sonosthesia is a highly inter-disciplinary project which aims to merge many traditionally separate fields together. A brief overview of the driving ideas is given here, they are described in more detail in the #[a(href="../concepts") concepts] section. Central to Sonosthesia is the idea of control I/O (input/output). In simple terms control I/O just means that different software components doing very different things, communicate with each other (and stimulate each other) by sending and receiving control messages.
+    p Sonosthesia is a highly inter-disciplinary project which aims to merge many traditionally separate fields together. A brief overview of the driving ideas is given here, they are described in more detail in the #[a(href="../concepts") concepts] section. Digital technologies have created a wealth of new possibilities for artists to create new visual and sonic art. The driving idea behind the project is not new and was elegantly formulated by Golan Levin on the #[a(href="http://acg.media.mit.edu/people/golan/aves/") Audiovisual Environment Suite] website, a project which goes back to the year 2000.
 
-    p A software component receives a control stream from a source and reacts to it (producing musical notes, timbre changes, graphical textures, mesh deformations, physical forces in a simulation, or whatever you can imagine). It can then generate descriptors of the content it has generated and feed them into a new control stream of its own. This stream can be piped to another software component. The next software component in the pipeline receives this control data as input and the can in turn generate content and an associated descriptor output control stream. This control stream can be piped into yet another software component, or several, or looped back to the first component, creating an infinite software control loop. Concrete examples may help.
+    div.container
+        p.quotation "The Audiovisual Environment Suite (AVES) is a set of five interactive systems which allow people to create and perform abstract animation and synthetic sound in real time. Each environment is an experimental attempt to design an interface which is supple and easy to learn, yet can also yield interesting, infinitely variable and personally expressive performances in both the visual and aural domains. Ideally, these systems permit their interactants to engage in a flow state of pure experience. The AVES systems are built around the metaphor of an inexhaustible and dynamic audiovisual substance, which is freely deposited and controlled by the user's gestures. Each instrument situates this substance in a context whose free-form structure inherits from the visual language of abstract painting and animation. The use of low-level synthesis techniques permits the sound and image to be tightly linked, commensurately malleable, and deeply plastic."
+
+    p This vision is central to Sonosthesia. We aim to create inter-modal control flows where content generated in different forms of media, by different software components, affect each other in real-time, as well as being influenced by user input, creating a continuous multi-modal experience.
+
+
+
+
+    p As computer technology advances the possibilities for real-time generation of complex audio/visual content grows with it. Interacting with these processes in real-time is an important step for humans to completely engage with these new forms of art, both as performers and spectators.
+
+    p Audio/visual have used tools such as Max (previously Max/MSP/Jitter in reference to its separate audio and graphical engines), or languages like Lua. These tools are great for experimentation and research however, they have for a number of reasons often failed to reach to a wider audience of professional music and CGI artists, and to content consumers.
+
+    p Modern game engines such as Unity present significant advantages over these tools. The first is that, as game engines, they have inbuilt physics engines designed to simulate collisions and dynamics which can provide data to feed back into the audio/visual generation processes. They are also designed to work with a wide array of input devices, and produce software which can run on a wide variety of platforms, desktops and laptops (Windows, Linux, macOS), smartphones (iOS, Android), browsers (through web standards such as WebGL) and most importantly emerging head mounted displays aiming to democratise virtual reality (Occulus Rift, HTC Vive, Sumsung GearVR). Being supported by a powerful gaming industry, Unity seems like it is bound to surf the crest of the VR wave at least for the foreseeable future.
+
+    p Emerging interaction techniques associated with virtual and augmented reality show real promise in allowing this, potentially eliminating the traditional bottlenecks created by low-dimensional input devices such as keyboards, mice, sliders, nobs, buttons and trackpads.
+
+
+    p In simple terms control I/O just means that different software components doing very different things, communicate with each other (and stimulate each other) by sending and receiving control messages. A software component receives a control stream from a source and reacts to it (producing musical notes, timbre changes, graphical textures, mesh deformations, physical forces in a simulation, or whatever you can imagine). It can then generate descriptors of the content it has generated and feed them into a new control stream of its own. This stream can be piped to another software component. The next software component in the pipeline receives this control data as input and the can in turn generate content and an associated descriptor output control stream. This control stream can be piped into yet another software component, or several, or looped back to the first component, creating an infinite software control loop. Concrete examples may help.
 
     h3 VR/AR Control I/O
 
