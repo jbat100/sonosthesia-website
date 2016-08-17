@@ -1,0 +1,16 @@
+doctype html
+html
+    head
+        != partial("_partials/head")
+
+    body.background-fill
+
+        header
+            != partial("_partials/header")
+
+        main
+            div
+                != yield
+
+        footer
+            != partial("_partials/footer")

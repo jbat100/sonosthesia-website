@@ -1,0 +1,72 @@
+//
+// Site specific styles
+//
+// First imports the theme and then allows you to
+// add your custom styles
+//
+// You can use all Bootstrap variables and mixins
+// that are provided by the theme
+//
+// --------------------------------------------------
+
+// Import flat bootstrap theme
+@import "themes/flat/theme";
+
+body{
+  padding-top: 70px;
+}
+
+footer{
+  background-color: rgba(230, 245, 255, 0.0);
+  margin: @grid-gutter-width 0 0 0;
+  padding: (@grid-gutter-width / 2) 0;
+  border-top: 1px solid darken(@well-border, 6%);
+  text-align: center;
+}
+
+ul.nav-docs{
+  margin-top: 60px;
+  h1{
+    margin: 1em 0 0 0;
+    padding: 10px 15px;
+    font-size: 1.8rem;
+  }
+}
+
+article.article-docs{
+  h1, h2, h3, h4, h5, h6{
+    margin: 1em 0;
+  }
+  h1{
+    font-size: 3rem;
+  }
+  h2{
+    font-size: 2.6rem;
+  }
+  h3{
+    font-size: 2.2rem;
+  }
+  h4{
+    font-size: 1.8rem;
+  }
+  p{
+    margin: 1em 0;
+  }
+  img{
+    width: 100%;
+  }
+}
+
+.background-fill {
+  background: linear-gradient(to right, rgba(255,255,255,0.5) 15%,rgba(245,255,255,0.7) 30%,rgba(245,245,255,0.8) 85%,rgba(186,228,255,0.5) 100%), url('../images/background1.jpg');
+}
+
+.quotation {
+  text-indent: 30px;
+  font-style: italic;
+  color: lighten(@gray, 20%);
+  margin-left: 8%;
+  margin-right: 15%;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
