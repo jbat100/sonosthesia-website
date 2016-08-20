@@ -1,8 +1,9 @@
 
 for tool in public.tools._data.tools
 
-    div
+    div.tool-container
         h2 #{tool.name}
         p #{tool.description}
+        a.btn.btn-primary.tool-button(href="#{tool.link}") Project Page
 
 
