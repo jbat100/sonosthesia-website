@@ -1,0 +1,12 @@
+{
+  "tools": [
+    {
+      "name": "Tool 1",
+      "description": "The fist tool"
+    },
+    {
+      "name": "Tool 2",
+      "description": "The second tool"
+    }
+  ]
+}
