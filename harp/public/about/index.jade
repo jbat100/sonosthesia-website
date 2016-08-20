@@ -41,21 +41,19 @@
 
     h3 Formalising Concepts
 
-    p The first objective is to gather, describe and develop ideas for audio/visual interaction paradigms and meaningful abstractions for mapping between different domains, modes or software components. Concepts are discussed extensively in a dedicated #[a(href="concepts") section]. The guideline is the idea of cross-modal control flow between components. The term component is deliberately vague, components produce any combination of visual, audio or haptic content and can run within or across processes, machines or networks. Different components then communicate with each other (and stimulate each other) by sending and receiving control streams and mapping between different domains. Determining how these mappings are made is a crucial aspect of the project.
+    p The first objective is to gather, describe and develop ideas for audio/visual interaction paradigms and meaningful abstractions for mapping between different domains, modes or software components. Concepts are discussed extensively in a #[a(href="concepts") dedicated section]. The guideline is the idea of cross-modal control flow between components. The term component is deliberately vague, components produce any combination of visual, audio or haptic content and can run within or across processes, machines or networks. Different components then communicate with and stimulate each other by sending and receiving control streams and mapping between different domains. Determining how these mappings are made is a crucial aspect of the project.
 
     h3 An Open Control Protocol for Endless Extension
 
-    p From these concepts should emerge some specifications which allow different control flow to be implemented in practise. The objective is a set of interoperable tools, plugins and libraries which allow existing software to interact. Having a rigorously specified protocol will facilitate this. The currently proposed protocol builds on top of OSC, which is very simple yet highly flexible and versatile.
+    p From these concepts should emerge a specification which allows different control flows to be implemented in practise. The objective is a set of interoperable tools, plugins and libraries which allow existing software to interact. Having a rigorously specified protocol will facilitate this. The currently proposed protocol builds on top of OSC, which is very simple yet highly flexible and versatile.
 
     h3 Scripts as Game Engine Extensions
 
-    p Its extensive C# scripting capabilities and hooks for binary extensions give it, on top of all these advantages, a great set of tools to implement custom behaviour.
-
-    p The first is game engines (such as Unity, Unreal Game Engine, Blender). These tools are used for game design, CGI, HCI and virtual reality. They are essentially a combination of a graphics engine, a physics engine, and some additional tools specifically aimed at facilitating creating 2D/3D/VR gaming experiences. These tools can be extended using their extensive scripting APIs.
+    p A number of game engines are available today, but Unity stands out as the environment of choice for virtual reality. Its extensive C# scripting capabilities and hooks for binary extensions give it, on top of all its advantages, a great opportunity to implement custom behaviour. A networking engine implementing the protocols developed for the project is proposed, as well as ongoing work on visualisation and collision parameterisation for sound synthesis control.
 
     h3 Audio/MIDI Plugins (VST/AU) as DAW Extensions
 
-    p These setups often only exploit the final mix of the musical performance, which has lost a lot of the information used to produce it.
+    p VST/AU plugins have the great advantage that they will run on any compatible host, which include digital audio workstations and Max. Current work focuses on performing real-time sound/MIDI analysis and mapping and broadcasting the results on the local network. Planned work includes building custom synthesizers (using a variety of tools including Max, Reaktor, Massive, Absynth and Omnisphere) which can be network-controlled using HCI paradigms implemented in parts of the Sonosthesia project.
 
 
 
