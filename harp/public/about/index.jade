@@ -3,77 +3,59 @@
 .container
 
 
-    h2 Next Generation Interactive Art
+    h2 Interactive Digital Art
 
-    p Sonosthesia is a highly inter-disciplinary project which aims to merge many traditionally separate fields together. A brief overview of the driving ideas is given here, they are described in more detail in the #[a(href="../concepts") concepts] section. Digital technologies have created a wealth of new possibilities for artists to create new visual and sonic art. The driving idea behind the project is not new and was elegantly formulated by Golan Levin on the #[a(href="http://acg.media.mit.edu/people/golan/aves/") Audiovisual Environment Suite] website, a project which goes back to the year 2000.
+
+    p The idea of interactive digital art is not new. It essentially emerged as soon as computer technology allowed it to, continuing a tradition of audio/visual art which preceded it in spirit but was neither digital nor interactive. It was elegantly formulated by Golan Levin on the #[a(href="http://acg.media.mit.edu/people/golan/aves/") Audiovisual Environment Suite] website, a project which goes back to the year 2000.
 
     div.container
-        p.quotation "The Audiovisual Environment Suite (AVES) is a set of five interactive systems which allow people to create and perform abstract animation and synthetic sound in real time. Each environment is an experimental attempt to design an interface which is supple and easy to learn, yet can also yield interesting, infinitely variable and personally expressive performances in both the visual and aural domains. Ideally, these systems permit their interactants to engage in a flow state of pure experience. The AVES systems are built around the metaphor of an inexhaustible and dynamic audiovisual substance, which is freely deposited and controlled by the user's gestures. Each instrument situates this substance in a context whose free-form structure inherits from the visual language of abstract painting and animation. The use of low-level synthesis techniques permits the sound and image to be tightly linked, commensurately malleable, and deeply plastic."
+        p.quotation "The Audiovisual Environment Suite [...] allows people to create and perform abstract animation and synthetic sound in real time. [It] attempts to design an interface which is supple and easy to learn, yet can also yield interesting, infinitely variable and personally expressive performances in both the visual and aural domains. Ideally, these systems permit their interactants to engage in a flow state of pure experience. [It is] built around the metaphor of an inexhaustible and dynamic audiovisual substance, which is freely deposited and controlled by the user's gestures. Each instrument situates this substance in a context whose free-form structure inherits from the visual language of abstract painting and animation. The use of low-level synthesis techniques permits the sound and image to be tightly linked, commensurately malleable, and deeply plastic."
 
-    p This vision is central to Sonosthesia. We aim to create inter-modal control flows where content generated in different forms of media, by different software components, affect each other in real-time, as well as being influenced by user input, creating a continuous multi-modal experience.
-
-
+    p An extended discussion of the audio/visual arts tradition as well as considerations for a new interface metaphor for digital media, and descriptions of substantial list of important works in the domain can be read in Golan Levin's #[a(href="http://www.flong.com/texts/publications/thesis/") Masters Thesis]. This vision is central to Sonosthesia. We aim to create inter-modal control flows where content generated in different forms of media, by different software components, affect each other in real-time, as well as being influenced by user input in powerfully expressive ways. As computer technology and interaction techniques evolve the possibilities for the real-time creation of complex audio/visual content grow with it, and although a number of projects have since continued Golan's work, opportunities provided by a new generation of tools seem to be yet untapped.
 
 
-    p As computer technology advances the possibilities for real-time generation of complex audio/visual content grows with it. Interacting with these processes in real-time is an important step for humans to completely engage with these new forms of art, both as performers and spectators.
-
-    p Audio/visual have used tools such as Max (previously Max/MSP/Jitter in reference to its separate audio and graphical engines), or languages like Lua. These tools are great for experimentation and research however, they have for a number of reasons often failed to reach to a wider audience of professional music and CGI artists, and to content consumers.
-
-    p Modern game engines such as Unity present significant advantages over these tools. The first is that, as game engines, they have inbuilt physics engines designed to simulate collisions and dynamics which can provide data to feed back into the audio/visual generation processes. They are also designed to work with a wide array of input devices, and produce software which can run on a wide variety of platforms, desktops and laptops (Windows, Linux, macOS), smartphones (iOS, Android), browsers (through web standards such as WebGL) and most importantly emerging head mounted displays aiming to democratise virtual reality (Occulus Rift, HTC Vive, Sumsung GearVR). Being supported by a powerful gaming industry, Unity seems like it is bound to surf the crest of the VR wave at least for the foreseeable future.
-
-    p Emerging interaction techniques associated with virtual and augmented reality show real promise in allowing this, potentially eliminating the traditional bottlenecks created by low-dimensional input devices such as keyboards, mice, sliders, nobs, buttons and trackpads.
+    h2 Old Ideas, New Opportunities
 
 
-    p In simple terms control I/O just means that different software components doing very different things, communicate with each other (and stimulate each other) by sending and receiving control messages. A software component receives a control stream from a source and reacts to it (producing musical notes, timbre changes, graphical textures, mesh deformations, physical forces in a simulation, or whatever you can imagine). It can then generate descriptors of the content it has generated and feed them into a new control stream of its own. This stream can be piped to another software component. The next software component in the pipeline receives this control data as input and the can in turn generate content and an associated descriptor output control stream. This control stream can be piped into yet another software component, or several, or looped back to the first component, creating an infinite software control loop. Concrete examples may help.
+    h3 Virtual Reality as an Interactive, Collaborative Rendering Platform
 
-    h3 VR/AR Control I/O
+    p Digital art performance has traditionally suffered from the low-dimensionality of typical control devices (sliders, knobs, keys, sometimes light-beams, touch-tables), these all have only one or two degrees of freedom and fall short of exploiting the huge potential of the human brain, which is revealed for example during virtuosic performances on acoustic instruments. Gestural control has been explored as a human-computer interaction (HCI) vector, addressing the issue of low dimensionality to some extent. However in the current form gestural interfaces suffer from a lack of context. That is they are performed in empty space while we would naturally expect the effect of our gestures to depend on their environmental effects. Adding context to our gestures would not only give a valuable frame of reference but also allow their effect to be context sensitive, which is a crucial advantage.
 
-    p Digital art performance has traditionally suffered from the low-dimensionality of typical control devices (sliders, knobs, keys, sometimes light-beams, touch-tables), these all have one or two degrees of freedom and fall short of exploiting the huge potential of the human brain, which is sometimes revealed during virtuosic performances on acoustic instruments. Gestural control has been a subject of research for some time but proposed interfaces often suffer from a lack of context, that is they are performed in empty space while we expect the effect of our gestures to depend on the objects they enter into contact with.
+    p Emerging technology such as virtual and augmented reality have a huge potential for supporting new highly engaging interaction paradigms, by providing a full blown three dimensional contextual environment for human interaction. Humans understand the world in three dimensions and a huge part of the brain is dedicated to fine real-world object manipulation allowing incredible levels of potential dexterity given enough practice and experience. VR platforms with their inbuilt physics engines and rapidly evolving rendering and input devices have the potential to emulate and augment real-world object manipulation. Performers can interact with purposely designed virtual objects, generating a stream of physics related data which can be used to provide organic, lifelike experiences, and effective real-time media control mechanisms.
 
-    p Emerging technology such as virtual and augmented reality have a huge potential for supporting new highly engaging interaction paradigms, which address these issues. Humans understand the world in three dimensions. A huge part of the brain is dedicated to the fine control of the hands and to real-world object manipulation allowing incredible levels of potential dexterity given enough practice and experience. VR has the potential to allow performers to exploit this great resource, by emulating real-world object manipulation. The added advantage is of course that we as programmers have total freedom in defining the way these manipulations map to control information (for sound, graphics, or anything else).
+    p Possibly the greatest advantage of virtual reality is that it is simultaneously an interaction context and a rendering context, which can greatly enhance the connection to the medium and promises a great number of new interaction paradigms. It also allows the audience to be immersed in the performance environment, experiencing and understanding and connecting with the performer's interactions at a deeper level, and possibly also affecting the content themselves. In a sense blurring the distinction between performers and audience.
 
-    h3 Musical Control I/O
+    h3 Reaching Out To the Mainstream
 
-    p Another driving idea behind the project is that of sound as a control mechanism. This idea is already in use in a number of common situations, concert lighting for example is often partially guided by the sound produced by a musical performance, music players often have a visualiser option which generate graphical eccentricities driven by sound characteristics, typically its time varying spectrum. These setups often only exploit the final mix of the musical performance, which has lost a lot of the information used to produce it.
+    p The mainstream of digital art consumers is clearly in demand for multi-modal content and already familiar with it to some extent. Concert lighting is often partially guided by the sound produced by a musical performance, music players often have a visualiser option which generate graphical eccentricities driven by sound characteristics. More sophisticated audio-visual art has potential mass appeal, but although there have been numerous research projects developing and implementing new ideas, they have struggled to escape the world of academia, research institutions and heavily technical enthusiasts. This is partly a reflection of the tools that are often used in cutting edge audio/visual art, such as Max, Pure Data or languages like Lua. These tools are extremely powerful but difficult to understand and master, and often intimidating for sound and visual artists who are accustomed to different types of software.
 
-    p In order to push this idea further musicians would ideally be able to create sonic meta-data directly from within their working environment, where individual instrument channels can easily be processed and analysed separately, and where control information such as MIDI notes or controllers, and plugin automation data is accessible. Musicians should be able to transform these sound descriptors into configurable control messages and broadcast these to any number of hosts on the local network (and beyond).
+    p Digital audio workstation (DAWs) are a primary tool for music composition and production, sound design, and most importantly live musical performances. They have extensive and intuitive tools for sequencing, mixing, orchestrating, processing, routing, loops, scores, automation, metadata and much more. This allows artists to easily create clear timbral, harmonic and temporal structure which is often missing in current audio-visual art. Although it could be argued that an environment like Max could replicate this structuring functionality, it would be difficult make it as usable and cohesive as packages like Logic Pro, Ableton Live or Pro Tools. They are very different tools which do different things, and guide artistic creation in different ways.
 
-    h3 Artificial Intelligence Control I/O
+    p Mainstream game engines such as Unity also offer game developers and artists functionality which is of obvious interest for Sonosthesia, such as advanced scene editing, guizmos, particle systems, a great shader language, powerful profiling and importantly a hugely abundant and versatile resource in the online asset store. It also produces extremely portable and adaptable software, which will work with a wide array of input devices, exploit the latest advances in GPU hardware and run on a wide variety of platforms including Windows, Linux, macOS, iOS, Android, WebGL and most importantly emerging head mounted displays aiming to democratise virtual reality (Occulus Rift, HTC Vive, Sumsung GearVR). Being supported by a powerful gaming industry, Unity seems like it is bound to surf the crest of the VR wave at least for the foreseeable future.
 
-
-    h3 A Vision for the Future
-
-    p Above are only two examples of a central The final objective is for virtual worlds to become performance spaces in their own right within which performers can interact with purposely designed virtual objects, with all the power of modern physics engines providing organic, lifelike experiences, and the flexibility to configure these objects as effective media controllers. Collaboration, Audience Immersion.
-
-    p Gather, describe and develop ideas for audio/visual content generation paradigms. The project provides a set of  interoperable tools, plugins and libraries which allow existing software to interact, and to provide meaningful abstractions for mapping different domains.
+    p The idea is not that Max or any of the tools currently used in research projects should be replaced by Unity and LogicPro. It is that all these software components should be able to interact together as they all provide different aspects of functionality which is relevant to the project goals. Building these bridges will bring a wealth of current artists closer to the project, with all their expertise and audiences. Audio-visual art can be mainstream, it just needs to reach out.
 
 
-    h2 Technical Approach
+    h2 Approach and Goals
 
-    h3 Software Extension
 
-    p Current objectives (hopefully there will be more soon), revolve around the extension of two major classes of software components.
+    h3 Formalising Concepts
 
-    p These tools are very mature and have a very large existing, highly skilled user base and between them provide a great deal of the functionality that we need. What is missing however is a language for them to interact with each other, sending each other information and control messages.
+    p The first objective is to gather, describe and develop ideas for audio/visual interaction paradigms and meaningful abstractions for mapping between different domains, modes or software components. Concepts are discussed extensively in a dedicated #[a(href="concepts") section]. The guideline is the idea of cross-modal control flow between components. The term component is deliberately vague, components produce any combination of visual, audio or haptic content and can run within or across processes, machines or networks. Different components then communicate with each other (and stimulate each other) by sending and receiving control streams and mapping between different domains. Determining how these mappings are made is a crucial aspect of the project.
 
+    h3 An Open Control Protocol for Endless Extension
+
+    p From these concepts should emerge some specifications which allow different control flow to be implemented in practise. The objective is a set of interoperable tools, plugins and libraries which allow existing software to interact. Having a rigorously specified protocol will facilitate this. The currently proposed protocol builds on top of OSC, which is very simple yet highly flexible and versatile.
 
     h3 Scripts as Game Engine Extensions
+
+    p Its extensive C# scripting capabilities and hooks for binary extensions give it, on top of all these advantages, a great set of tools to implement custom behaviour.
 
     p The first is game engines (such as Unity, Unreal Game Engine, Blender). These tools are used for game design, CGI, HCI and virtual reality. They are essentially a combination of a graphics engine, a physics engine, and some additional tools specifically aimed at facilitating creating 2D/3D/VR gaming experiences. These tools can be extended using their extensive scripting APIs.
 
     h3 Audio/MIDI Plugins (VST/AU) as DAW Extensions
 
-    p One thing game engines are not good at is real-time musical sound control as most games do not require much beyond playing spatialised pre-recorded sounds, sonic atmosphere generation, perhaps rudimentary sonification. Enter the second class of software tools, namely digital audio workstations (such as Logic Pro, Ableton Live or Pro Tools). These tools are used for music composition and production, sound design, and most importantly live musical performances. They are particularly good at controlling sound synthesis, processing audio streams, creating processing pipelines, sequencing notes, handling large sound libraries, loops, complicated audio setups, routing, mixing and a lot more. through the use of plugins (VST and AU)
-
-    h3 Control Protocols Based on OSC
-
-    p We aim to provide a common language for software components to communicate. Specifically, develop effective and generic protocols to provide analysis data and control data, allowing different software components to interact with each other in meaningful ways.
-
-
-
-
-
-
+    p These setups often only exploit the final mix of the musical performance, which has lost a lot of the information used to produce it.
 
 
 
