@@ -2,8 +2,15 @@
 for tool in public.tools._data.tools
 
     div.tool-container
-        h2 #{tool.name}
-        p #{tool.description}
-        a.btn.btn-primary.tool-button(href="#{tool.link}") Project Page
+        div.row
+            div.col-sm-3.tool-side-panel
+                a.btn.btn-default.btn-sm.btn-block.tool-button.disabled #{tool.state}
+                a.btn.btn-primary.btn-sm.btn-block.tool-button(href="#{tool.link}") Project Page
+
+            div.col-sm-9
+                h2 #{tool.name}
+                p #{tool.description}
+
+
 
 
