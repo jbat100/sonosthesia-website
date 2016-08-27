@@ -2,14 +2,14 @@
   "tools": [
     {
       "name": "Sonosthesia-Analyser",
-      "description": "VST/AU plugin to analyse sound, map the results to control groups and descriptors and broadcast them to OSC control targets. This project is derived from Adam Stark's Sound Analyser. Sound analysis can be performed using a variety of algorithms from the Gist library and others, additional analysis options are planned. Control groups and descriptors can easily be assigned to different OSC targets (host/port combination).",
+      "description": "VST/AU plugin to analyse sound, map the results to control groups and descriptors and broadcast them to OSC control targets (host/port combination). This project is derived from Adam Stark's Sound Analyser. Sound analysis can be performed using a variety of algorithms from the Gist library and others, additional analysis options are planned. You can use the sound going through any channel or bus in your DAW as a controller for anything that understands sonosthesia control protocols, anywhere on your local network.",
       "link": "analyser",
       "state": "Early Beta",
       "image": "../images/analyser2.png"
     },
     {
       "name": "Sonosthesia-Relay",
-      "description": "VST/AU plugin to intercept MIDI messages and automation data, map the results to control groups and descriptors and broadcast them to OSC control targets. You can forward all your DAW control data to anywhere on the network. There are different options to translate MIDI data to control data to allow for maximum flexibility",
+      "description": "VST/AU plugin to intercept MIDI messages and automation data, map the results to control groups and descriptors and broadcast them to OSC control targets (host/port combination).  There are different options to translate MIDI data to control data to allow for maximum flexibility. You can forward all your DAW's MIDI and automation data as controllers for anything that understands sonosthesia control protocols, anywhere on the network.",
       "link": "relay",
       "state": "Early Beta",
       "image": "../images/relay2.png"
