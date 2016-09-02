@@ -1,11 +1,24 @@
 
 @import "_bootstrap.less";
 
-body{
+@sonosthesia-well-border-color: rgba(14, 42, 67, 0.5);
+@sonosthesia-well-background-color: rgba(14, 42, 67, 0.15);
+
+body {
   padding-top: 70px;
 }
 
-footer{
+h1 {
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+h2, h3 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+footer {
   background-color: rgba(230, 245, 255, 0.0);
   margin: @grid-gutter-width 0 0 0;
   padding: (@grid-gutter-width / 2) 0;
@@ -15,36 +28,13 @@ footer{
 
 ul.nav-docs{
   margin-top: 60px;
-  h1{
+  h1 {
     margin: 1em 0 0 0;
     padding: 10px 15px;
     font-size: 1.8rem;
   }
 }
 
-article.article-docs{
-  h1, h2, h3, h4, h5, h6{
-    margin: 1em 0;
-  }
-  h1{
-    font-size: 3rem;
-  }
-  h2{
-    font-size: 2.6rem;
-  }
-  h3{
-    font-size: 2.2rem;
-  }
-  h4{
-    font-size: 1.8rem;
-  }
-  p{
-    margin: 1em 0;
-  }
-  img{
-    width: 100%;
-  }
-}
 
 // BOOTSTRAP GRID HACKS
 
@@ -75,19 +65,6 @@ article.article-docs{
   background: linear-gradient(to right, rgba(255,255,255,0.4) 15%,rgba(245,255,255,0.6) 30%,rgba(245,245,255,0.4) 85%,rgba(186,228,255,0.6) 100%), url('../images/background2.jpg');
 }
 
-.background-move {
-  padding-bottom: 30px;
-  border-top: 1px solid rgba(59, 103, 133, 0.7);
-  border-bottom: 1px solid rgba(59, 103, 133, 0.7);
-  background: linear-gradient(to right, rgba(180,230,230,0.3) 0%, rgba(180,230,250,0.38) 50%, rgba(180,230,230,0.3) 100%);
-  background-size: 600% 600%;
-  animation: about-gradient-animator 8s ease infinite;
-  @keyframes about-gradient-animator {
-    0%{background-position:0% 0%}
-    50%{background-position:100% 100%}
-    100%{background-position:0% 0%}
-  }
-}
 
 // SECTION BACKGROUND
 
@@ -149,6 +126,7 @@ article.article-docs{
 // SPECIAL TEXT
 
 p {
+  text-indent: 20px;
   margin-left: 2%;
   margin-right: 2%;
 }
@@ -188,7 +166,17 @@ p {
   margin-top: 20px;
 }
 
-// TOOLS BOXES
+// CONCEPTS
+
+.concept-definition {
+  padding: 15px 5% 15px 5%;
+  margin: 30px 10% 30px 10%;
+  border-radius: 15px;
+  border: 2px solid @sonosthesia-well-border-color;
+  background-color: @sonosthesia-well-background-color;
+}
+
+// TOOLS
 
 .tool-button {
   border-radius: 4px;
@@ -200,8 +188,8 @@ p {
   padding-right: 2%;
   margin-top: 15px;
   border-radius: 15px;
-  border: 1px solid rgba(14, 42, 67, 0.5);
-  background-color: rgba(14, 42, 67, 0.15);
+  border: 1px solid @sonosthesia-well-border-color;
+  background-color: @sonosthesia-well-background-color;
 }
 
 .tool-side-panel {
