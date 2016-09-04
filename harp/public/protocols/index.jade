@@ -4,13 +4,15 @@
 
     p A central concept of Sonosthesia cross-modal control flow between components. Components can react to control input and produce control output. Creating a reference for domain specific control data to allow compatibility between different components is an important step, depending on the type of component this control data will take different forms. Digital art often uses the open-ended OSC protocol, which is very flexible but lack the kind of standardised semantics enforced by older protocols such as MIDI. OSC also lacks data structuring (maps, arrays etc...) and does not allow bi-directional messaging patterns, both of which Sonosthesia as shown a need for.
 
-    p JSON has been chosen for data representation as it combines flexibility and structure with an explicit, self-documenting human readable format. It is also transport-independent and its capacity for handling a wide variety of messaging patterns is well tested. There might be some over-head in terms of size but with modern hardware, the effect will be insignificant unless unreasonable message densities are used.
+    p When it comes to sound and music, the persistence of MIDI for sound control despite its limitations (7 bit depth for channel, pitch, small number of channels, limited control and after-touch etc...) shows the power of standardization. Although OSC has found a place in music its role is often as a low-level controller (frequencies, amplitudes, filter parameters...). It hasn't replaced MIDI, it has complemented it. The factory messaging pattern described above is a perfect fit for emulating and augmenting MIDI capabilities. MIDI channels map to the channel property of factory messages, while pitch and volume can be given as parameters, a MIDI note on message would translate to
 
+    p JSON has been chosen for data representation as it combines flexibility and structure with an explicit, self-documenting human readable format. It is also transport-independent and its capacity for handling a wide variety of messaging patterns is well tested. There might be some over-head in terms of size but with modern hardware, the effect will be insignificant unless unreasonable message densities are used.
 
 
     h2 Creating Objects
 
-    p An object is created on a given channel, with a given (machine-generated) unique identifier. Initial values can be given for its parameters.
+
+    p An object is created on a given channel, with a given (machine-generated) unique identifier. Initial values can be given for its parameters and properties.
 
     :markdown
         ```javascript
@@ -21,20 +23,38 @@
                 "parameters": {
                     "parameter1": 0.3245543,
                     "parameter2": 0.5433435
+                },
+                "properties": {
+                    "property1": "something"
                 }
             }
         ```
 
-    h2 Controlling Objects
+    h2 Destroying Objects
 
-    p Once an object is created, any set of its parameters can be controlled by using its unique identifier. Note that the channel is not specified. Given each unique object identifier is tied to the creator channel, it would be redundant information.
+    p An object is can be destroyed using its unique identifier. Given each unique object identifier is tied to the creator channel, it would be redundant information. Final property and parameter values can be given to guide it's destruction process (fade outs, explosions, etc...).
 
     :markdown
         ```javascript
-            // control parameters for an object, given its identifier
+            {
+                "type": "destroy",
+                "object": "123e4567-e89b-12d3-a456-426655440000",
+                "parameters": {
+                    "parameter1": 0.3245543,
+                    "parameter2": 0.5433435
+                }
+            }
+        ```
+
+    h2 Modifying Object Parameters
+
+    p Once an object is created, any its parameters can be changed by using its unique object identifier. Again the channel is redundant information.
+
+    :markdown
+        ```javascript
             {
                 "type": "parameter",
-                "identifier": "123e4567-e89b-12d3-a456-426655440000",
+                "object": "123e4567-e89b-12d3-a456-426655440000",
                 "parameters": {
                     "parameter1": 0.3039989,
                     "parameter2": 0.5386749
@@ -42,67 +62,53 @@
             }
         ```
 
-    p A control message can be applied to multiple objects by specifying an array of unique object identifiers.
+    p A parameter message can be applied to multiple objects by specifying an array of unique object identifiers.
 
     :markdown
         ```javascript
-            // control parameters multiple objects, given their identifier
             {
-                "type": "control",
-                "identifier": ["123e4567-e89b-12d3-a456-426655440000", "42665544-e89b-12d3-a456-123e45670000"],
+                "type": "parameter",
+                "object": ["123e4567-e89b-12d3-a456-426655440000", "42665544-e89b-12d3-a456-123e45670000"],
                 "parameters": {
                     "parameter2": 0.3039989
                 }
             }
         ```
 
-    p This simple message format can be also used for discrete events, simply by changing #[b control/continuous] to #[b control/event]. In this case the #[b value] field becomes optional, this simple mechanism is surprisingly versatile.
+    p Multi-dimensional parameters are allowed but think carefully about whether you need them as they make mappings more complex. Just pass an array of floats instead of a float.
 
     :markdown
         ```javascript
-        // as simple as it gets
-        {
-            "type": "control/event",
-            "group": "group1"
-            "descriptor": "jump"
-        }
-
-        // creating a switch control/event
-        {
-            "type": "control/event",
-            "group": "group2"
-            "descriptor": "switch",
-            "value": 3
-        }
-        ```
-
-
-
-
-    p Note in the first two examples, the channel is not specified, the unique object identifier is associated with it so it would be redundant information. If the channel is specified as in the third example, the control applies to all objects on the channel, also specifying an identifier is an invalid message. When the time comes to destroy the object, the same referencing (identifier/channel) mechanism is used
-
-    :markdown
-        ```javascript
-            // destroy an object, given its identifier
             {
-                "type": "destroy",
-                "identifier": "123e4567-e89b-12d3-a456-426655440000",
+                "type": "parameter",
+                "object": "123e4567-e89b-12d3-a456-426655440000",
                 "parameters": {
-                    "parameter2": 0.3039989
+                    "parameter2": [0.3039989, 0.3425266]
                 }
             }
         ```
 
-    p Note that there may be parameters that only make sense on creation, control, destruction or any combination. This will be up to the factory channel to determine.
+    p Property messages are very similar
 
-    h2 Controlling Channels
+    :markdown
+        ```javascript
+            {
+                "type": "property",
+                "object": "123e4567-e89b-12d3-a456-426655440000",
+                "properties": {
+                    "property1": "something"
+                }
+            }
+        ```
 
-    p which function as an abstraction for anything which can be controlled. The basic channel control message looks like this.
+    h2 Modifying Channel Parameters
+
+    p As stated in the terminology, channels are in fact static objects. They just exist, they are not created or destroyed. Being objects they have the same parameter modification system, only the message contains a #[b channel] field instead of an #[b object] field to identify the target. Although they can be used as object factories, channels can also be used as static control mechanisms (controlling the tempo of a musical rendering for example). If the channel has created objects, the parameter or property changes will be propagated to them.
 
     :markdown
         ```javascript
         {
-            "type": "control",
+            "type": "parameter",
             "channel": "channel1",
             "parameters": {
                 "parameter1": 0.32352,
@@ -111,18 +117,18 @@
         }
         ```
 
-    h2 Sound Synthesis Control Data
+    h2 Controlling Sound Synthesis
 
-    p When it comes to sound and music, the persistence of MIDI for sound control despite its limitations (7 bit depth for channel, pitch, small number of channels, limited control and after-touch etc...) shows the power of standardization. Although OSC has found a place in music its role is often as a low-level controller (frequencies, amplitudes, filter parameters...). It hasn't replaced MIDI, it has complemented it. The factory messaging pattern described above is a perfect fit for emulating and augmenting MIDI capabilities. MIDI channels map to the channel property of factory messages, while pitch and volume can be given as parameters, a MIDI note on message would translate to
+    p Concrete examples of how these concepts can be applied are useful. For sound synthesis, we can use the patterns described above to elegantly emulate and augment MIDI capabilities. A note on message translate to
 
     :markdown
         ```javascript
             {
-                "type": "synth/create",
+                "type": "create",
                 "channel": "pad1",
                 "identifier": "123e4567-e89b-12d3-a456-426655440000",
                 "parameters": {
-                    "pitch": "A#5",
+                    "pitch": 440.0,
                     "volume": 0.5433435,
                     "shine": 0.232838,
                     "attack": 0.642466
@@ -130,48 +136,60 @@
             }
         ```
 
-    p There are obvious advantages over MIDI here, channels can have meaningful names (and their number is not limited by the standard). Volume has float precision, pitch is a string which allows it to address non-western or micro-tonal pitching or raw frequencies, and additional parameters can be added to alter the synthesiser parameters for each individual note. MIDI control messages fit just as nicely.
+    p There are obvious advantages over MIDI here. Channels can have meaningful names and their number is not limited by the standard. Volume has float precision, pitch is a float which allows it to address non-western or micro-tonal pitching or raw frequencies, and additional parameters can be added to alter the synthesiser parameters for each individual note. MIDI control messages fit just as nicely.
 
     :markdown
         ```javascript
-        // control
         {
-            "type": "synth/control",
-            "identifier": "123e4567-e89b-12d3-a456-426655440000",
+            "type": "parameter",
+            "object": "123e4567-e89b-12d3-a456-426655440000",
             "parameters": {
-                "pitch": "f_432"
-                "intensity": 0.342342,
-                "shine": 0.54345343
+                "pitch": 440.0
             }
         }
         ```
 
-    p Note that a MIDI pitch bend can be obtained by sending control messages with a changing pitch parameter, or a bend parameter to specify a pitch offset parameter. MIDI note off messages map to factory object destruction, for example
+    p A MIDI pitch bend, for example, can be obtained by sending control messages with a changing pitch parameter, or a bend parameter to specify a pitch offset. A MIDI note off is an object destruction, for example
 
     :markdown
         ```javascript
 
         // stop for a single note
         {
-            "type": "synth/stop",
-            "identifier": "123e4567-e89b-12d3-a456-426655440000",
+            "type": "destroy",
+            "object": "123e4567-e89b-12d3-a456-426655440000",
             "parameters": {
                 "release": 0.342342
             }
         }
         ```
 
-    p This additional flexibility in defining a synthesizers attributes and control mechanism comes at a cost of complexity for the synthesizer itself. But it is a price worth paying. It is up to the synthesizers to document the parameters which they support (as described in the previous section), and up to the controller to adapt, the factory messaging pattern works and emulates MIDI, enhancing it in significant ways, most notably flexible individual note control.
+    p In comparison to MIDI, the additional flexibility in defining a synthesizers attributes and control mechanism comes at a cost of complexity for the synthesizer itself. But it is a price worth paying, the growing capability of synthesisers to explore exotic soundscapes make the shortcomings of MIDI ever more apparent. It is up to the synthesizers to document the parameters which they support (as described in the previous section), and up to the controller to adapt.
 
+    h2 Describing Sound
 
-    h2 Virtual Object Manipulation Control Data
-
-    p Virtual object manipulation is of central importance to the Sonosthesia project, it is a complex emerging subject. There is little pre-existing work in terms of protocols describing them. The factory messaging pattern is applied here also, for describing contacts. The channel represents an object in the virtual world (sphere, teapot etc...). A contact is created when a foreign objects collides with the channel.
+    p This messaging pattern can be used for both controlling and describing things. A channel can be used to transport sound analysis parameters for a given track in a DAW (or any audio application).
 
     :markdown
         ```javascript
         {
-            "type": "contact/create",
+            "type": "parameter",
+            "channel": "bass",
+            "parameters": {
+                "pitch": 440.0,
+                "spectral-bins": [0.265434, 0.634633, 0.4534345]
+            }
+        }
+        ```
+
+    h2 Describing Virtual Object Manipulation
+
+    p Virtual object manipulation is of central importance to the Sonosthesia project, it is a complex emerging subject. There is little pre-existing work in terms of protocols describing them. The same messaging pattern is applied here also, for describing contacts. The channel represents an object in the virtual world (sphere, teapot etc...). A contact is created when a foreign objects collides with the channel.
+
+    :markdown
+        ```javascript
+        {
+            "type": "create",
             "channel": "sphere1",
             "identifier": "123e4567-e89b-12d3-a456-426655440000"
             "parameters": {
@@ -186,13 +204,13 @@
 
     p There are two required parameters which are the #[b incidence] (see #[a(href="https://en.wikipedia.org/wiki/Angle_of_incidence_(optics)") angle of incidence]) and the velocity. Note that vectors are abstracted away, incidence and velocity should be enough dynamic information. This means that the same message format can be used for both 2D and 3D environments, there is no dimensionality change.
 
-    p Other parameters are defined by the surface properties of the colliding objects at the point of collision. These properties should have behavioural meaning, influencing contact mappings. They can be mapped from the color components or UV coordinates at the impact points or anything else, let your imagination run wild. Once the contact is initiated, it can persist if the colliders stay within a given range of each other, in order to emulate actions like scratching, scraping, rubbing. During that time the parameters can be constantly updated by factory control messages.
+    p Other parameters are defined by the surface properties of the colliding objects at the point of collision. Although the value of these surface properties can be encoded in the color components or UV coordinates, they should really be translated into behavioural meaning by the emitting component which will help the mappings to other domains. In other words, parameter names such as #[i wood], #[i metal] and #[i hardness] should be preferred to #[i red], #[u] or #[x]. Once the contact is initiated, it can persist if the colliders stay within a given range of each other, in order to emulate actions like scratching, scraping, rubbing. During that time the parameters can be constantly updated by factory control messages.
 
     :markdown
         ```javascript
         {
-            "type": "contact/control",
-            "identifier": "123e4567-e89b-12d3-a456-426655440000"
+            "type": "parameter",
+            "object": "123e4567-e89b-12d3-a456-426655440000"
             "parameters": {
                 "incidence": 0.4982,
                 "velocity": 3.7534,
@@ -203,13 +221,13 @@
         }
         ```
 
-    p Note as before the absence of the channel property, which is implied by the unique identifier. When the colliders overrun the set contact distance threshold, the contact is destroyed following the factory messaging pattern (note the negative velocity implying that the colliders are moving away from each other).
+    p When the colliders overrun the set contact distance threshold, the contact is destroyed following the factory messaging pattern (note the negative velocity implying that the colliders are moving away from each other).
 
     :markdown
         ```javascript
         {
-            "type": "contact/destroy",
-            "identifier": "123e4567-e89b-12d3-a456-426655440000"
+            "type": "destroy",
+            "object": "123e4567-e89b-12d3-a456-426655440000"
             "parameters": {
                 "incidence": 0.4982,
                 "velocity": -3.7534
@@ -217,26 +235,33 @@
         }
         ```
 
-    h2 Declaring a Component Channels
+    h2 Declaring Channels
 
-    p A simple factory definition is used to publish available parameters for each channel.
+    p Components can declare the channels that they support, for each declaring valid properties and parameters.
 
-        :markdown
-            ```javascript
-                // destroy an object, given its identifier
-                {
-                    "type": "component",
-                    "channels": {
-                        "channel1": {
-                            "create": ["parameter1", "parameter2", "parameter3"],
-                            "control": ["parameter2", "parameter3"],
-                            "destroy": ["parameter4"]
-                        },
-                        "channel2": {
-                            "create": ["parameter1"],
-                            "control": ["parameter2", "parameter3"],
-                            "destroy": ["parameter4", "parameter5"]
-                        }
-                    }
-                }
-            ```
+    :markdown
+        ```javascript
+            // a typical DAW synth channel declaration
+            {
+                "type": "channel",
+                "identifier": "pad1"
+                "domain": "synth",
+                "parameters": ["pitch", "velocity", "bend", "shine"]
+            }
+
+            // a typical DAW sound analysis channel declaration
+            {
+                "type": "channel",
+                "identifier": "pad1"
+                "domain": "sound",
+                "parameters": ["pitch", "rms", "crest", "shine"]
+            }
+
+            // a typical game engine contact channel declaration
+            {
+                "type": "channel",
+                "identifier": "sphere1"
+                "domain": "contact",
+                "parameters": ["incidence", "velocity", "wood", "metal", "hardness"]
+            }
+        ```

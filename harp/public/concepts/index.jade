@@ -16,13 +16,11 @@
     h1 Sonosthesia Terminology
 
     ul
-        li A #[b parameter] is an abstraction for a continuous control target/descriptor. Examples would include cutoff frequency, texture coordinates, timbral attributes, rotation angle, color components, whatever can be meaningfully be expressed as a floating point number.
-        li A #[b property] is an abstraction for a discrete control target/descriptor. Examples would include string identifiers for objects, song sections, scenes, loops or whatever can be meaningfully be expressed as a character string.
-        li An #[b object] is an abstraction for an entity which exposes a set of parameters and properties. Examples would include a MIDI note (pitch, velocity...).
-        li An #[b action] is an abstraction for an action associated with an object. Actions are a higher level concept than #[b parameters] and #[b properties]. They can trigger time-varying changes in parameters or properties. Actions can have associated #[b descriptors], for example a jump action could have a height and direction.
-        li A #[b channel] is a static object (it exposes parameters, properties and actions but is always there, never created nor destroyed) and creates and destroys dynamic object instances. The typical example would be a MIDI channel which creates and destroys MIDI note objects. Both the MIDI notes and the channel itself expose parameters.
+        li A #[b parameter] is an abstraction for a controllable. Examples would include cutoff frequency, texture coordinates, timbral attributes, rotation angle, color components. They are typically floats but can be vectors of floats which can be useful especially for description (spectral bins for example).
+        li An #[b object] is an abstraction for an entity which exposes a set of parameters. Examples would include a MIDI note (pitch, velocity...).
+        li An #[b action] is an abstraction for an action associated with an object. Actions are a higher level concept than #[b parameters]. They can trigger time-varying changes in parameters. Actions can have associated #[b descriptors], for example a #[i jump] action could have a #[i height] and #[b direction].
+        li A #[b channel] is a static object (it exposes parameters and actions but is always there, never created nor destroyed) and creates and destroys dynamic object instances. The typical example would be a MIDI channel which creates and destroys MIDI note objects. Both the MIDI notes and the MIDI channel expose parameters.
         li A #[b component] is a grouping of channel typically but not necessarily held within a software document (a DAW project or a Unity scene for example).
-
 
     h1 Standards for Cross-Domain Mappings
 
