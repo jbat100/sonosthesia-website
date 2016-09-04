@@ -13,6 +13,17 @@
     p An extended discussion of the audio/visual arts tradition as well as considerations for a new interface metaphor for digital media, and descriptions of substantial list of important works in the domain can be read in Golan Levin's #[a(href="http://www.flong.com/texts/publications/thesis/") Masters Thesis]. This vision is central to Sonosthesia. We aim to create inter-modal control flows where content generated in different forms of media, by different software components, affect each other in real-time, as well as being influenced by user input in powerfully expressive ways. As computer technology and interaction techniques evolve the possibilities for the real-time creation of complex audio/visual content grow with it, and although a number of projects have since continued Golan's work, opportunities provided by a new generation of tools seem to be yet untapped.
 
 
+    h1 Sonosthesia Terminology
+
+    ul
+        li A #[b parameter] is an abstraction for a continuous control target/descriptor. Examples would include cutoff frequency, texture coordinates, timbral attributes, rotation angle, color components, whatever can be meaningfully be expressed as a floating point number.
+        li A #[b property] is an abstraction for a discrete control target/descriptor. Examples would include string identifiers for objects, song sections, scenes, loops or whatever can be meaningfully be expressed as a character string.
+        li An #[b object] is an abstraction for an entity which exposes a set of parameters and properties. Examples would include a MIDI note (pitch, velocity...).
+        li An #[b action] is an abstraction for an action associated with an object. Actions are a higher level concept than #[b parameters] and #[b properties]. They can trigger time-varying changes in parameters or properties. Actions can have associated #[b descriptors], for example a jump action could have a height and direction.
+        li A #[b channel] is a static object (it exposes parameters, properties and actions but is always there, never created nor destroyed) and creates and destroys dynamic object instances. The typical example would be a MIDI channel which creates and destroys MIDI note objects. Both the MIDI notes and the channel itself expose parameters.
+        li A #[b component] is a grouping of channel typically but not necessarily held within a software document (a DAW project or a Unity scene for example).
+
+
     h1 Standards for Cross-Domain Mappings
 
     p The core of Sonosthesia is to create mappings between different domains. Control pipelines of arbitrary complexity can be put in place, by mapping control streams from one component/domain to the next. At each step control stream can be piped into another component, or several, or looped back to the first component, creating an infinite control loop. Defining how these mappings are made is a crucial aspect of the project. Striking the right balance between simplicity, flexibility and domain-specific semantics is key.

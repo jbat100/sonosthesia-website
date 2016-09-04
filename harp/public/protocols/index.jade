@@ -6,54 +6,78 @@
 
     p JSON has been chosen for data representation as it combines flexibility and structure with an explicit, self-documenting human readable format. It is also transport-independent and its capacity for handling a wide variety of messaging patterns is well tested. There might be some over-head in terms of size but with modern hardware, the effect will be insignificant unless unreasonable message densities are used.
 
-    h2 Factory Control Data
 
-    p A useful generic concept is that of a factory, which #[b creates], #[b controls] and #[b destroys] products. This applies for example to MIDI (where the products are notes) as we will see in the next section, but also to other areas relating to virtual environments. In its generic form the factory messaging pattern looks like this. First we create an object, on a given channel, with a given identifier, and associated parameters.
+
+    h2 Creating Objects
+
+    p An object is created on a given channel, with a given (machine-generated) unique identifier. Initial values can be given for its parameters.
 
     :markdown
         ```javascript
             {
-                "type": "factory/create",
+                "type": "create",
                 "channel": "channel1",
                 "identifier": "123e4567-e89b-12d3-a456-426655440000",
                 "parameters": {
-                    "parameter1": "something",
+                    "parameter1": 0.3245543,
                     "parameter2": 0.5433435
                 }
             }
         ```
 
-    p The channel is user defined, it represents an object generator. Each channel defines the set of parameters it supports. The identifier looks deliberately machine-generated, users don't care about it, it is just a key for future control and destruction. Now that the object is created, we can control any set of its parameters
+    h2 Controlling Objects
+
+    p Once an object is created, any set of its parameters can be controlled by using its unique identifier. Note that the channel is not specified. Given each unique object identifier is tied to the creator channel, it would be redundant information.
 
     :markdown
         ```javascript
             // control parameters for an object, given its identifier
             {
-                "type": "factory/control",
+                "type": "parameter",
                 "identifier": "123e4567-e89b-12d3-a456-426655440000",
                 "parameters": {
-                    "parameter2": 0.3039989
+                    "parameter1": 0.3039989,
+                    "parameter2": 0.5386749
                 }
             }
+        ```
 
+    p A control message can be applied to multiple objects by specifying an array of unique object identifiers.
+
+    :markdown
+        ```javascript
             // control parameters multiple objects, given their identifier
             {
-                "type": "factory/control",
+                "type": "control",
                 "identifier": ["123e4567-e89b-12d3-a456-426655440000", "42665544-e89b-12d3-a456-123e45670000"],
                 "parameters": {
                     "parameter2": 0.3039989
                 }
             }
-
-            // control parameters for all objects on a given channel
-            {
-                "type": "factory/control",
-                "channel": "channel1",
-                "parameters": {
-                    "parameter2": 0.3039989
-                }
-            }
         ```
+
+    p This simple message format can be also used for discrete events, simply by changing #[b control/continuous] to #[b control/event]. In this case the #[b value] field becomes optional, this simple mechanism is surprisingly versatile.
+
+    :markdown
+        ```javascript
+        // as simple as it gets
+        {
+            "type": "control/event",
+            "group": "group1"
+            "descriptor": "jump"
+        }
+
+        // creating a switch control/event
+        {
+            "type": "control/event",
+            "group": "group2"
+            "descriptor": "switch",
+            "value": 3
+        }
+        ```
+
+
+
 
     p Note in the first two examples, the channel is not specified, the unique object identifier is associated with it so it would be redundant information. If the channel is specified as in the third example, the control applies to all objects on the channel, also specifying an identifier is an invalid message. When the time comes to destroy the object, the same referencing (identifier/channel) mechanism is used
 
@@ -61,7 +85,7 @@
         ```javascript
             // destroy an object, given its identifier
             {
-                "type": "factory/destroy",
+                "type": "destroy",
                 "identifier": "123e4567-e89b-12d3-a456-426655440000",
                 "parameters": {
                     "parameter2": 0.3039989
@@ -69,26 +93,22 @@
             }
         ```
 
-    p Note that there may be parameters that only make sense on creation, control, destruction or any combination. This will be up to the factory channel to determine. A simple factory definition is used to publish available parameters for each channel.
+    p Note that there may be parameters that only make sense on creation, control, destruction or any combination. This will be up to the factory channel to determine.
+
+    h2 Controlling Channels
+
+    p which function as an abstraction for anything which can be controlled. The basic channel control message looks like this.
 
     :markdown
         ```javascript
-            // destroy an object, given its identifier
-            {
-                "type": "factory/setup",
-                "channels": {
-                    "channel1": {
-                        "create": ["parameter1", "parameter2", "parameter3"],
-                        "control": ["parameter2", "parameter3"],
-                        "destroy": ["parameter4"]
-                    },
-                    "channel2": {
-                        "create": ["parameter1"],
-                        "control": ["parameter2", "parameter3"],
-                        "destroy": ["parameter4", "parameter5"]
-                    }
-                }
+        {
+            "type": "control",
+            "channel": "channel1",
+            "parameters": {
+                "parameter1": 0.32352,
+                "parameter2": 0.87467
             }
+        }
         ```
 
     h2 Sound Synthesis Control Data
@@ -197,60 +217,26 @@
         }
         ```
 
+    h2 Declaring a Component Channels
 
-    h2 Generic Control Data
+    p A simple factory definition is used to publish available parameters for each channel.
 
-    p Having a multipurpose generic control message is very useful. It simplifies mappings between different domains, these messages can be used both as input to or output from components. Control messages are assigned a #[b group], a #[b descriptors] and a #[b value].
-
-    :markdown
-        ```javascript
-        // set descriptor2 with 4-vector for subgroup1 of group2
-        {
-            "type": "control/continuous",
-            "group": "group1"
-            "descriptor": "descriptor2",
-            "value": 0.32352
-        }
-        ```
-
-    p The group defines what objects the control should be applied to, and descriptor defines how the values should be used to change these objects. Groups can be nested (to arbitrary levels), giving them a hierarchy. For example group #[b group1/subgroup1] belongs to group #[b group1]. Controlling a group will also affect all descendant groups. Parameter values can be be arrays or maps.
-
-    :markdown
-        ```javascript
-        // set shine and rgba (with 4-vector) for subgroup1 of group2
-        {
-            "type": "control/continuous",
-            "group": "group2/subgroup1"
-            "parameters": {
-                "rgba": [0.32352, 0.54322, 0.23533, 0.35747],
-                "shine": 0.3423
-        }
-
-        // set rgba/r value for group2
-        {
-            "type": "control/continuous",
-            "group": "group2"
-            "descriptor": "rgba/r",
-            "value": 0.32352
-        }
-        ```
-
-    p This simple message format can be also used for discrete events, simply by changing #[b control/continuous] to #[b control/event]. In this case the #[b value] field becomes optional, this simple mechanism is surprisingly versatile.
-
-    :markdown
-        ```javascript
-        // as simple as it gets
-        {
-            "type": "control/event",
-            "group": "group1"
-            "descriptor": "jump"
-        }
-
-        // creating a switch control/event
-        {
-            "type": "control/event",
-            "group": "group2"
-            "descriptor": "switch",
-            "value": 3
-        }
-        ```
+        :markdown
+            ```javascript
+                // destroy an object, given its identifier
+                {
+                    "type": "component",
+                    "channels": {
+                        "channel1": {
+                            "create": ["parameter1", "parameter2", "parameter3"],
+                            "control": ["parameter2", "parameter3"],
+                            "destroy": ["parameter4"]
+                        },
+                        "channel2": {
+                            "create": ["parameter1"],
+                            "control": ["parameter2", "parameter3"],
+                            "destroy": ["parameter4", "parameter5"]
+                        }
+                    }
+                }
+            ```
