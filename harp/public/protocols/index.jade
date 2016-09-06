@@ -117,6 +117,10 @@
         }
         ```
 
+    h2 Receiver and Emitter Channels
+
+    p This messaging pattern can be used for both controlling and describing things. That is a channel can emit messages in order to describe an ongoing process, or a channel can receive messages and apply them to control an ongoing process. In this sense channels are #[b emitters] or #[b receivers].
+
     h2 Controlling Sound Synthesis
 
     p Concrete examples of how these concepts can be applied are useful. For sound synthesis, we can use the patterns described above to elegantly emulate and augment MIDI capabilities. A note on message translate to
@@ -168,7 +172,7 @@
 
     h2 Describing Sound
 
-    p This messaging pattern can be used for both controlling and describing things. A channel can be used to transport sound analysis parameters for a given track in a DAW (or any audio application).
+    p A channel can be used to transport sound analysis parameters for a given track in a DAW (or any audio application).
 
     :markdown
         ```javascript
@@ -177,7 +181,9 @@
             "channel": "bass",
             "parameters": {
                 "pitch": 440.0,
-                "spectral-bins": [0.265434, 0.634633, 0.4534345]
+                "spectral-bins": [0.265434, 0.634633, 0.453434, 0.328053],
+                "spectral-diff": [0.084524, 0.134308, 0.334342, 0.024233],
+                "spectral-crest": 0.325342
             }
         }
         ```
@@ -241,27 +247,30 @@
 
     :markdown
         ```javascript
-            // a typical DAW synth channel declaration
+            // a typical DAW synth control channel declaration
             {
                 "type": "channel",
                 "identifier": "pad1"
                 "domain": "synth",
+                "type": "receiver",
                 "parameters": ["pitch", "velocity", "bend", "shine"]
             }
 
-            // a typical DAW sound analysis channel declaration
+            // a typical DAW sound description channel declaration
             {
                 "type": "channel",
                 "identifier": "pad1"
                 "domain": "sound",
+                "type": "emitter",
                 "parameters": ["pitch", "rms", "crest", "shine"]
             }
 
-            // a typical game engine contact channel declaration
+            // a typical game engine contact descrition channel declaration
             {
                 "type": "channel",
                 "identifier": "sphere1"
                 "domain": "contact",
+                "type": "emitter",
                 "parameters": ["incidence", "velocity", "wood", "metal", "hardness"]
             }
         ```
