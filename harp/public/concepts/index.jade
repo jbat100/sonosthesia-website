@@ -8,19 +8,72 @@
     div.container
         p.quotation "The Audiovisual Environment Suite [...] allows people to create and perform abstract animation and synthetic sound in real time. [It] attempts to design an interface which is supple and easy to learn, yet can also yield interesting, infinitely variable and personally expressive performances in both the visual and aural domains. Ideally, these systems permit their interactants to engage in a flow state of pure experience. [It is] built around the metaphor of an inexhaustible and dynamic audiovisual substance, which is freely deposited and controlled by the user's gestures. Each instrument situates this substance in a context whose free-form structure inherits from the visual language of abstract painting and animation. The use of low-level synthesis techniques permits the sound and image to be tightly linked, commensurately malleable, and deeply plastic."
 
-    p An extended discussion of the audio/visual arts tradition as well as considerations for a new interface metaphor for digital media, and descriptions of substantial list of important works in the domain can be read in Golan Levin's #[a(href="http://www.flong.com/texts/publications/thesis/") Masters Thesis]. This vision is central to Sonosthesia. We aim to create inter-modal control flows where content generated in different forms of media, by different software components, affect each other in real-time, as well as being influenced by user input in powerfully expressive ways. As computer technology and interaction techniques evolve the possibilities for the real-time creation of complex audio/visual content grow with it, and although a number of projects have since continued Golan's work, opportunities provided by a new generation of tools seem to be yet untapped.
+    p An extended discussion of the audio/visual arts tradition as well as considerations for a new interface metaphor for digital media, and descriptions of substantial list of important works in the domain can be read in Golan Levin's #[a(href="http://www.flong.com/texts/publications/thesis/") Masters Thesis]. This vision is central to Sonosthesia. We aim to create cross-domain control flows where content generated in different forms of media, by different software components, affect each other in real-time, as well as being influenced by user input in powerfully expressive ways. As computer technology and interaction techniques evolve the possibilities for the real-time creation of complex audio/visual content grow with it.
+
+    h1 Virtual Reality as a performance environment
+
+    p The idea of virtual sound worlds which can both react to and control sound in real-time is a central driving force behind Sonosthesia. A number of key concepts make VR as a performance environment a truly inspiring goal, and the current revolution driven by Occulus, HTC, Sony, Unity and other key players like the hugely promising #[a(href="http://www.maxplay.io/") Maxplay], is finally edging this goal to within reach.
 
 
-    h1 Standards for Cross-Domain Mappings
+    div.about-item-container
+
+        h3 Inbuilt Physics
+
+        p Our real-life experience of sound control is impossible to dissociate from physics. We generate sounds by tapping, thumping, scraping, scratching, pinching, plucking, strumming... The physics behind all these actions are intuitive to us, we do not need to understand them mathematically in order for them to make sense. They can however be described in terms of collisions, contacts or friction by the physics engines which are central to any VR engine. This offers the potential to emulate and augment real-world object manipulation using these intuitive mechanisms, generating a stream of physics data which can be used to provide organic, lifelike experiences of sounds, visuals and haptics.
+
+    div.about-item-container
+
+        h3 Gestures in Context
+
+        p Virtual reality gives context to gestures, something which has been missing from a previous gestural interfaces. We intuitively expect the result of our gestures to be dependent on their effect on the local environment. A drummer can use the same stick motions to create a great number of different sounds by varying impact points. In the same way, the context brought by a virtual world allows performers to create endless control variations from a limited gestural vocabulary by giving virtual objects different control characteristics which can be encoded in their color, texture, size, shape or any other attribute.
+
+    div.about-item-container
+
+        h3 Spectator Immersion
+
+        p Virtual reality is that it is simultaneously an interaction context and a rendering context, which can greatly enhance the feeling of presence. It allows the audience to be immersed in the performance environment, experiencing, understanding and connecting with the performer's interactions at a deeper level, and possibly also affecting the content themselves. In a sense this blurs the distinction between performers and audience, and turns passive observers into participants who can breath endless life into artistic content.
+
+
+    h1 Collaborative Software Environments
+
+    p Audio visual arts
+
+    div.about-item-container
+
+        h3 Virtual Reality Game Engines
+
+        p VR game engines such as Unity and Unreal offer game developers and artists functionality which is of obvious interest for Sonosthesia, such as advanced scene editing, guizmos, particle systems, unified shader languages, powerful profiling tools and hugely abundant and versatile online asset stores. They also produce extremely portable and adaptable software, which will work with a wide array of input devices, exploit the latest in hardware and run on a wide variety of platforms including desktop, mobile, web and most importantly emerging head mounted displays aiming to democratise virtual reality.
+
+    div.about-item-container
+
+        h3 Visual Programming Environments
+
+        p Visual (or patcher) programming languages such as #[a(href="https://cycling74.com/products/max") Max] and #[a(href="https://puredata.info/") PureData] have been at the forefront of interactive digital arts research for a while, and for good reason. Their data and control representation is naturally suited to real-time reactive systems and the integration of both sonic (MSP) and graphical (Jitter) tools is a great asset for the creation of multi-modal content. The recent addition of high-level content generation and processing tools such as #[a(href="https://cycling74.com/2015/09/15/a-few-minutes-with-beap-tutorial-series") BEAP] and #[a(href="https://cycling74.com/2010/11/19/introducing-vizzie") Vizzie] make Max all the more appealing.
+
+    div.about-item-container
+
+        h3 Digital Audio Workstations
+
+        p Digital audio workstation (DAWs) are a primary tool for music composition and production, sound design, and most importantly live musical performances. They have extensive and intuitive tools for sequencing, mixing, orchestrating, processing, routing, loops, scores, automation, metadata and much more. This allows artists to easily create clear timbral, harmonic and temporal structure which is often missing in current audio-visual art. Although it could be argued that an environment like visual programming lamguages like Max could replicate this structuring functionality, it would be difficult make it as usable and cohesive as packages like Logic Pro, Ableton Live or Pro Tools.
+
+
+
+
+
+    h1 A Universal Language for Cross-Domain Control Flows
 
     p The core of Sonosthesia is to create mappings between different domains. Control pipelines of arbitrary complexity can be put in place, by mapping control streams from one component/domain to the next. At each step control stream can be piped into another component, or several, or looped back to the first component, creating an infinite control loop. Defining how these mappings are made is a crucial aspect of the project. Striking the right balance between simplicity, flexibility and domain-specific semantics is key. Sonosthesia uses a simple yet powerful abstraction for the description and control of processes in different domains. Before any further discussion, the terminology is clarified.
 
-    ul
-        li A #[b parameter] is an abstraction for a controllable. Examples would include cutoff frequency, texture coordinates, timbral attributes, rotation angle, color components. They are typically floats but can be multi-dimensional float vectors which can be useful in certain circumstances.
-        li An #[b object] is an abstraction for an entity which can be created, destroyed and controlled via a set of parameters. Examples would include a MIDI note (pitch, velocity...), a collision with an object in virtual reality, an element of sound visualisation, or whatever suits the domain.
-        li A #[b channel] is a static object (it exposes parameters and actions but is always there, never created nor destroyed) and may creates and destroys dynamic object instances. The typical example would be a MIDI channel which creates and destroys MIDI note objects. Both the MIDI notes and the MIDI channel expose parameters.
-        li An #[b action] is a higher level control concept than a #[b parameter]. It can trigger time-varying changes in parameters. Actions can have associated #[b descriptors], for example a #[i jump] action could have #[i height] and #[b direction] descriptors.
-        li A #[b component] is a grouping of channel typically but not necessarily held within a software document (a DAW project or a Unity scene for example).
+    div.about-item-container
+
+        h3 Terminology
+
+        ul
+            li A #[b parameter] is an abstraction for a controllable. Examples would include cutoff frequency, texture coordinates, timbral attributes, rotation angle, color components. They are typically floats but can be multi-dimensional float vectors which can be useful in certain circumstances.
+            li An #[b object] is an abstraction for an entity which can be created, destroyed and controlled via a set of parameters. Examples would include a MIDI note (pitch, velocity...), a collision with an object in virtual reality, an element of sound visualisation, or whatever suits the domain.
+            li A #[b channel] is a static object (it exposes parameters and actions but is always there, never created nor destroyed) and may creates and destroys dynamic object instances. The typical example would be a MIDI channel which creates and destroys MIDI note objects. Both the MIDI notes and the MIDI channel expose parameters.
+            li An #[b action] is a higher level control concept than a #[b parameter]. It can trigger time-varying changes in parameters. Actions can have associated #[b descriptors], for example a #[i jump] action could have #[i height] and #[b direction] descriptors.
+            li A #[b component] is a grouping of channel typically but not necessarily held within a software document (a DAW project or a Unity scene for example).
 
     p A few examples of concrete applications for these abstractions are given here (see #[a(href="../protocols")] to see how they are translated into simple JSON messages).
 
