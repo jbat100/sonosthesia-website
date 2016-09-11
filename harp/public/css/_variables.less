@@ -48,6 +48,7 @@
 @link-color:            @brand-primary;
 //** Link hover color set via `darken()` function.
 @link-hover-color:      darken(@link-color, 15%);
+@link-hover-decoration: darken(@link-color, 15%);
 
 
 //== Typography
@@ -477,10 +478,10 @@
 
 @jumbotron-padding:              30px;
 //@jumbotron-color:                inherit;
-@jumbotron-color:                @gray;
+@jumbotron-color:                @gray-dark;
 @jumbotron-bg:                   fade(@gray-lighter, 0%);
 //@jumbotron-heading-color:        inherit;
-@jumbotron-heading-color:        @gray;
+@jumbotron-heading-color:        @gray-dark;
 @jumbotron-font-size:            ceil((@font-size-base * 1.5));
 
 
@@ -849,3 +850,8 @@
 
 //** Horizontal offset for forms and lists.
 @component-offset-horizontal: 180px;
+
+
+@dl-horizontal-offset:        @component-offset-horizontal;
+//** Point at which .dl-horizontal becomes horizontal
+@dl-horizontal-breakpoint:    @grid-float-breakpoint;
