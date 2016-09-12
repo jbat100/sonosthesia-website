@@ -1,0 +1,25 @@
+{
+  "tools": [
+    {
+      "name": "Sonosthesia-Analyser",
+      "description": "VST/AU plugin to analyse sound, map the results to control groups and descriptors and broadcast them to OSC control targets (host/port combination). This project is derived from Adam Stark's Sound Analyser. Sound analysis can be performed using a variety of algorithms from the Gist library and others, additional analysis options are planned. You can use the sound going through any channel or bus in your DAW as a controller for anything that understands sonosthesia control protocols, anywhere on your local network.",
+      "link": "analyser",
+      "state": "Early Beta",
+      "image": "../images/analyser2.png"
+    },
+    {
+      "name": "Sonosthesia-Relay",
+      "description": "VST/AU plugin to intercept MIDI messages and automation data, map the results to control groups and descriptors and broadcast them to OSC control targets (host/port combination).  There are different options to translate MIDI data to control data to allow for maximum flexibility. You can forward all your DAW's MIDI and automation data as controllers for anything that understands sonosthesia control protocols, anywhere on the network.",
+      "link": "relay",
+      "state": "Early Beta",
+      "image": "../images/relay2.png"
+    },
+    {
+      "name": "Sonosthesia-Unity",
+      "description": "A set of Unity C# providing a number of extensions for the Sonosthesia project. This includes an OSC control message receiver and sender, scene manipulators driven by control messages and control message generators driven by scene dynamics. Unity editor scripts are also provided to facilitate scene setup and configuration, and the understanding of Sonosthesia's cross-modal mapping concepts.",
+      "link": "unity",
+      "state": "Alpha",
+      "image": "../images/analyser2.png"
+    }
+  ]
+}
