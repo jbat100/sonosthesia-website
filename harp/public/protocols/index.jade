@@ -8,7 +8,7 @@
 
     p MIDI has survived as a protocol for sound control despite its limitations (7 bit depth for channel, pitch, small number of channels, limited control and after-touch etc...) shows the power of enforcing standard semantics. Electronic musicians can visualise musical ideas in MIDI because musical ideas are buit into the protocol. In order to overcome the limitations of MIDI, audio-visual digital art instalations often use the open-ended OSC protocol, which is very flexible and generic but lacks the standardised semantics of MIDI which makes colaboration between projects and software more complicated as different agents must agree on some overlaying structure to exchange data. OSC hasn't replaced MIDI, it has complemented it, often as a low-level controller (for colors, textures, frequencies, amplitudes, filter parameters...).
 
-    p The protocol used Sonosthesia also draws from a subset of ideas used in the field of multi-agent systems (such as system #[a(href="https://en.wikipedia.org/wiki/Ontology_(information_science)") ontology] expressed by ACL). This allows interactions between components to be more expressive, dynamic and flexible, by enabling them to publish their input and output channels with associated control paramaters. The central hub application which routes control messages from different client component applications uses this to offer a generic mapping interface which reflects the currently available channels.
+    p The protocol used Sonosthesia also draws from a small subset of ideas used in the field of multi-agent systems (such as #[a(href="https://en.wikipedia.org/wiki/Ontology_components") component ontology] expressed by ACL). This allows interactions between components to be more expressive, dynamic and flexible, by enabling them to publish their input and output channels with associated control paramaters. The central hub application which routes control messages from different client component applications uses this to offer a generic mapping interface which reflects the currently available channels.
 
     h2 JSON and transport abstraction
 
@@ -55,6 +55,7 @@
                     }
                 ]
             }
+        ```
 
     p An example game engine component with contact descrition and force (wind) channels:
 
@@ -333,3 +334,5 @@
         ```
 
     h2 Extending to Other Domains
+
+    p These are only a few concrete simple examples, the protocol can be applied to any kind of system which can expose input and output channels with numerical parameters.

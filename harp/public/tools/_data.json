@@ -2,28 +2,28 @@
   "tools": [
     {
       "name": "Sonosthesia-Hub",
-      "description": "The hub is the central building block which allows all the other software components to talk to each other. It is a large node.js module which offers a lot of functionality with a simple API. This includes a TCP server which understands the JSON messages defined by Sonosthesia, persistence by writing configurations to files, mapping tools and much more.",
+      "description": "The hub is the central building block which allows all the other software components to talk to each other. It implements networking, messaging, mapping and processing functionality as typescript modules running on node.js. This can be used independently or with a web-based UI based on angular 2, using electron. Client components can connect to the hub using websockets or raw tcp, exchanging JSON messages. Other connection options may be added later as the need arises.",
       "link": "https://github.com/jbat100/sonosthesia-hub/tree/develop",
       "state": "Alpha",
-      "image": ""
+      "image": "../images/sonosthesia-hub-icon.png"
     },
     {
       "name": "Sonosthesia-Unity",
-      "description": "A set of Unity C# providing a number of extensions for the Sonosthesia project. This includes network connectivity such as an OSC control message receiver and sender (client/server), a TCP client for the Sonosthesia-Hub. scene manipulators driven by control messages and control message generators driven by scene dynamics. Unity editor scripts are also provided to facilitate scene setup and configuration, and the understanding of Sonosthesia's cross-modal mapping concepts.",
+      "description": "A set of Unity C# utilities and behaviours providing a number of extensions for the Sonosthesia project. This includes core functionality such as websocket-based connectivity to the sonosthesia hub and utilities to handle sonosthesia messages. It also offers different scripts for scene setup, configuration and manipulation which are driven by control messages which facilitate the development of responsive, interactive scenes which can interact with other sonosthesia components.",
       "link": "https://github.com/jbat100/sonosthesia-unity/tree/develop",
       "state": "Alpha",
-      "image": ""
+      "image": "../images/sonosthesia-unity-icon.png"
     },
     {
       "name": "Sonosthesia-Analyser",
-      "description": "VST/AU plugin to analyse sound and broadcast them to the Sonosthesia-Hub. Alternatively, you can map the results to channels and parameters, and broadcast them to OSC control targets (host/port combination). This project is derived from Adam Stark's Sound Analyser. Sound analysis can be performed using a variety of algorithms from the Gist library and others, additional analysis options are planned. You can use the sound going through any channel or bus in your DAW as a controller for anything that understands Sonosthesia protocols, anywhere on your local network.",
+      "description": "VST/AU plugin to analyse sound and broadcast them to the sonosthesia hub. Alternatively, you can map the results to channels and parameters, and broadcast them to OSC control targets (host/port combination). This project is derived from Adam Stark's Sound Analyser. Sound analysis can be performed using a variety of algorithms from the Gist library and others, additional analysis options are planned. You can use the sound going through any channel or bus in your DAW as a controller for anything that understands sonosthesia protocols, anywhere on your local network.",
       "link": "https://github.com/jbat100/sonosthesia-analyser/tree/develop",
       "state": "Beta",
       "image": "../images/analyser2.png"
     },
     {
       "name": "Sonosthesia-Relay",
-      "description": "VST/AU plugin to intercept MIDI messages and automation data and broadcast to the Sonosthesia-Hub. Alternatively, you can map the results to control channels and parameters and broadcast them to OSC control targets (host/port combination). There are different options to translate MIDI data to control data to allow for maximum flexibility. You can forward all your DAW's MIDI and automation data as controllers for anything that understands Sonosthesia protocols, anywhere on the network.",
+      "description": "VST/AU plugin to intercept MIDI messages and automation data and broadcast to the sonosthesia hub. Alternatively, you can map the results to control channels and parameters and broadcast them to OSC control targets (host/port combination). There are different options to translate MIDI data to control data to allow for maximum flexibility. You can forward all your DAW's MIDI and automation data as controllers for anything that understands Sonosthesia protocols, anywhere on the network.",
       "link": "https://github.com/jbat100/sonosthesia-relay/tree/develop",
       "state": "Beta",
       "image": "../images/relay2.png"
