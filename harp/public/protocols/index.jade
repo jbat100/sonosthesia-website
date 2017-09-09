@@ -23,19 +23,22 @@
             {
                 "component": "daw1",
                 "channels": [
-                    // // a typical DAW synth control component declaration, recieving MIDI like control data
+                    // a typical DAW synth control component declaration
+                    // recieving MIDI like control data
                     {
                         "identifier": "synth1"
                         "description": "lead synth", // optional
                         "flow": "receiver",
-                        // paramaters can be declared as a list of identifiers in which case they are [0-1] with default 0
+                        // paramaters can be declared as a list of identifiers
+                        // in which case they are [0-1] with default 0
                         "parameters": ["pitch", "velocity", "bend", "shine"]
                     },
                     // a typical DAW sound description channel declaration, emitting sound descriptors
                     {
                         "identifier": "analysis1"
                         "flow": "emitter",
-                        // paramaters can be declared as a list of objects with specific dimensions, min, max and default
+                        // paramaters can be declared as a list of objects
+                        // with specific dimensions, min, max and default
                         "parameters" : [
                             {
                                 "identifier" : "pitch",
@@ -148,9 +151,9 @@
             }
         ```
 
-    h2 Modifying Object Parameters
+    h2 Modifying Instance Parameters
 
-    p Once an object is created, any its parameters can be changed by using its unique object identifier.
+    p Once an instance is created, any its parameters can be changed by using its unique object identifier.
 
     :markdown
         ```javascript
@@ -166,7 +169,7 @@
             }
         ```
 
-    p A parameter message can be applied to multiple objects by specifying an array of unique object identifiers.
+    p A parameter message can be applied to multiple instances by specifying an array of unique instance identifiers.
 
     :markdown
         ```javascript
@@ -237,12 +240,10 @@
         }
         ```
 
-    p A MIDI pitch bend, for example, can be obtained by sending control messages with a changing pitch parameter, or a bend parameter to specify a pitch offset. A MIDI note off is an object destruction, for example
+    p A MIDI pitch bend, for example, can be obtained by sending control messages with a changing pitch parameter, or a bend parameter to specify a pitch offset. A MIDI note off is an instance destruction, for example
 
     :markdown
         ```javascript
-
-        // stop for a single note
         {
             "type": "destroy",
             "component": "daw1",
@@ -263,7 +264,7 @@
     :markdown
         ```javascript
         {
-            "type": "parameter",
+            "type": "control",
             "component": "daw1",
             "channel": "bass",
             "parameters": {
