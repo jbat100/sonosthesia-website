@@ -1,8 +1,97 @@
 
 .container
 
+    h1 Interactive Digital Arts
 
-    h1 VR as a Controller
+    p The idea of interactive digital art is not new. It essentially emerged as soon as computer technology allowed it to, continuing a tradition of audio/visual art which preceded it in spirit but was neither digital nor interactive. It was elegantly formulated by Golan Levin on the #[a(href="http://acg.media.mit.edu/people/golan/aves/") Audiovisual Environment Suite] website, a project which goes back to the year 2000.
 
-    h1 Sound as a Controller
+    div.container
+        p.quotation "The Audiovisual Environment Suite [...] allows people to create and perform abstract animation and synthetic sound in real time. [It] attempts to design an interface which is supple and easy to learn, yet can also yield interesting, infinitely variable and personally expressive performances in both the visual and aural domains. Ideally, these systems permit their interactants to engage in a flow state of pure experience. [It is] built around the metaphor of an inexhaustible and dynamic audiovisual substance, which is freely deposited and controlled by the user's gestures. Each instrument situates this substance in a context whose free-form structure inherits from the visual language of abstract painting and animation. The use of low-level synthesis techniques permits the sound and image to be tightly linked, commensurately malleable, and deeply plastic."
+
+    p An extended discussion of the audio/visual arts tradition as well as considerations for a new interface metaphor for digital media, and descriptions of substantial list of important works in the domain can be read in Golan Levin's #[a(href="http://www.flong.com/texts/publications/thesis/") Masters Thesis]. This vision is central to Sonosthesia. We aim to create cross-domain control flows where content generated in different forms of media, by different software components, affect each other in real-time, as well as being influenced by user input in powerfully expressive ways. As computer technology and interaction techniques evolve the possibilities for the real-time creation of complex audio/visual content grow with it.
+
+    h1 Virtual Reality as a performance environment
+
+    p The idea of virtual sound worlds which can both react to and control sound in real-time is a central driving force behind Sonosthesia. A number of key concepts make VR as a performance environment a truly inspiring goal, and the current revolution driven by Occulus, HTC, Sony, and game engines such as Unity and Unreal, is finally edging this goal to within reach. Virtual reality presents a number of enticing prospects.
+
+
+    div.about-item-container
+
+        h3 Object Manipulation as Control Input
+
+        p Our real-life experience of sound control is impossible to dissociate from physics. We generate sounds by grabbing, throwing, tapping, scraping, scratching, pinching, plucking, strumming... The physics behind all these actions are intuitive to us, we do not need to understand them mathematically in order for them to make sense. They can however be described in terms of collisions, contacts or friction by the physics engines which are central to any VR engine. This offers the potential to emulate and augment real-world object manipulation using these intuitive mechanisms, generating a stream of physics data which can be used to provide organic, lifelike experiences of sounds, visuals and haptics.
+
+    div.about-item-container
+
+        h3 Gestures in Context
+
+        p Virtual reality gives context to gestures, something which has been missing from a previous gestural interfaces for audio visual arts. We intuitively expect the result of our gestures to be dependent on their effect on the local environment. A drummer can use the same stick motions to create a great number of different sounds by varying impact points. In the same way, the context brought by a virtual world allows performers to create endless control variations from a limited gestural vocabulary by giving virtual objects different control characteristics which can be encoded in their color, texture, size, shape or any other attribute.
+
+    div.about-item-container
+
+        h3 Spectator Immersion
+
+        p Virtual reality is simultaneously an interaction context and a rendering context, which can greatly enhance the feeling of presence. It allows the audience to be immersed in the performance environment, experiencing, understanding and connecting with the performer's interactions at a deeper level, and possibly also affecting the content themselves. In a sense this blurs the distinction between performers and audience, and turns passive observers into participants who can breath endless life into artistic content.
+
+
+    h1 Collaborative Software Environments
+
+    p Immersive digital arts is a complex multi-disciplinary subject which allow a great diversity of skills and talents to express themselves. Different artists use different types of software packages which guide content creation in different way, some are lower-level some higher-level, and all have relative strengths in different aspects of functionality. Sonosthesia's approach is to allow these different types of applications which are traditionally used in isolation to interact with each other using a powerful common language. Four types of software are of particular interest.
+
+    div.about-item-container
+
+        h3 Virtual Reality Engines
+
+        p VR engines such as #[a(href="https://unity3d.com/learn/tutorials/topics/virtual-reality") Unity], #[a(href="https://www.unrealengine.com/vr") Unreal] offer game developers and artists functionality which is of obvious interest for Sonosthesia, such as advanced scene editing, gizmos, flexible particle systems, unified shader languages, highly accurate and descriptive physics engines, powerful profiling tools and abundant and versatile online asset stores. They also produce extremely portable and adaptable software, which will work with a wide array of rendering platforms including desktop, mobile, web and most importantly emerging head mounted displays aiming to democratise VR. There is also close ongoing collaboration with input device manufacturers (#[a(href="https://www3.oculus.com/en-us/touch/") Occulus Touch], #[a(href="https://www.vive.com/us/accessory/controller/") VIVE controllers], #[a(href="https://www.leapmotion.com/product/vr") Leap Motion], #[a(href="http://www.dextarobotics.com/") Dexta Robotics]), which ensures that users can make use of rapidly evolving input, haptic and force feedback technology.
+
+    div.about-item-container
+
+        h3 Audio-visual Programming Tools
+
+        p Patcher programming environments such as #[a(href="https://cycling74.com/products/max") Max] and #[a(href="https://puredata.info/") PureData] and purpose-built languages such as #[a(href="https://processing.org") Processing] have been at the forefront of interactive digital arts research for a while, and for good reason. Their data and control representation is naturally suited to real-time reactive systems and the integration of both sonic and graphical tools is a great asset for the creation of multi-modal content. They are typically used as relatively low-level content and logical pipeline editors which is both extremely powerful but also quite daunting. The recent addition of high-level content generation and processing tools such as #[a(href="https://cycling74.com/2015/09/15/a-few-minutes-with-beap-tutorial-series") BEAP] and #[a(href="https://cycling74.com/2010/11/19/introducing-vizzie") Vizzie] make them all the more appealing.
+
+    div.about-item-container
+
+        h3 Digital Audio Workstations
+
+        p Digital audio workstation (DAWs) are a primary tool for music composition and production, sound design, and most importantly live musical performances. They have extensive and intuitive tools for sequencing, mixing, orchestrating, processing, routing, loops, scores, automation, metadata and much more. This allows artists to easily create clear timbral, harmonic and temporal structure which is often missing in current audio-visual art. Although it could be argued that an environment like visual programming languages like Max could replicate this structuring functionality, it would be difficult make it as usable and cohesive as packages like Logic Pro, Ableton Live or Pro Tools.
+
+    div.about-item-container
+
+        h3 Creative Deep Learning Algorithms
+
+        p There has been a recent surge in artificial intelligence driven by a number of advances relating to the fields of deep learning neural networks. Of particular interest in the capacity of these systems to generate aesthetic content, for example by #[a(href="https://www.ted.com/talks/blaise_aguera_y_arcas_how_computers_are_learning_to_be_creative?language=en") reversing processes used for perception and categorisation]. A number of research projects (like #[a(href="https://magenta.tensorflow.org/welcome-to-magenta") Magenta]) are dedicated to the idea of applying machine learning to create compelling art and music. This has resulted in tools like #[a(href="https://en.wikipedia.org/wiki/DeepDream") DeepDream] which uses neural networks to find and enhance patterns in images via algorithmic pareidolia, creating dreamlike hallucinogenic images. While real-time content generation is still a challenge, these tools are of central interest to Sonosthesia.
+
+
+
+    h1 A Universal Language for Cross-Domain Control Flows
+
+    p The core of Sonosthesia is to create mappings between different domains. Control pipelines of arbitrary complexity can be put in place, by mapping control streams from one component/domain to the next. At each step control stream can be piped into another component, or several, or looped back to the first component, creating an infinite control loop. Defining how these mappings are made is a crucial aspect of the project. Striking the right balance between simplicity, flexibility and domain-specific semantics is key. Sonosthesia uses a simple yet powerful abstraction for the description and control of processes in different domains. Before any further discussion, the terminology is clarified.
+
+    div.about-item-container
+
+        h3 Terminology
+
+        ul
+            li A #[b parameter] is an abstraction for something which is numerically controllable (in n-dimensions). Examples would include cutoff frequency, texture coordinates, timbral attributes, rotation angle, color components. They are typically floats but can be multi-dimensional float vectors which can be useful in certain circumstances.
+            li A #[b channel] is a static control medium. It exposes a set of parameters (with specified dimensionality, minimum, maximum and default values). It may be used to create and destroy dynamic #[b instances] which have the same set of independently controlled parameters. The typical example would be a MIDI channel which creates and destroys MIDI note objects. Both the MIDI notes and the MIDI channel expose parameters.
+            li A #[b component] is a grouping of channel typically but not necessarily held within a software document (a DAW project or a Unity scene for example).
+
+    p This seemingly simple set of concepts can be applied to a surprising variety of situations. MIDI channels and notes, generating and modifying visual shapes, describing object manipulations in terms of continuous contacts, controlling forces in physical simulations, are only a few examples. Once every component can understand the basic data structuring mechanism, mapping comes naturally. A few examples of concrete applications for these abstractions are given here (see #[a(href="../protocols")] to see how they are translated into simple JSON messages).
+
+    h1 Cross-Domain Control Flows in Practise
+
+    h2 VR Contacts as Sound Synthesis Controllers
+
+    p We interact with traditional acoustic instruments in the real world through direct (pinching, plucking, strumming) or indirect (using sticks, bows, plectrums...) manipulation. It is natural to transfer these paradigms into the virtual realm and control sound synthesis algorithms using manipulation descriptors. Physics-based sound synthesis for games and interactive applications is a field which has been researched extensively. Many different techniques are used to give a wide variety of results including multidimensional wave guides, resonators, formants, wavelets, granular or particle models and many more.
+
+    p Contacts between objects and manipulators can be described in terms of collisions, relative velocities, incidence angles, and surface properties. We can describe each manipulation target in the virtual environment as a #[i channel] and express contacts made by manipulators (fingers, bows, sticks or anything else) as #[i objects] on that #[i channel]. Each contact can then evolve in real-time by modulating the contact #[i parameters]. The virtual object's visual attributes can be used to describe surface properties, for example a texture containing both wooden and metallic sections can be used to give cues as to the sonic behaviour of the objects.
+
+    p From there mapping to synthesis becomes natural, each contact generates a note #[i object] on a synthesizer #[i channel]. The velocity and incidence of the initial contact collision can affect the volume and/or cutoff attack/decay. The synthesis #[i parameters] can then be linked to contact description #[i parameters] giving a powerful form of after-touch. Once the contact stops, that is once the manipulator reaches a given threshold distance from the target, then the corresponding note #[i object] is destroyed. Arbitrarily complex control racks of target objects each with their individual sonic character can be built in the virtual environment, and each performer can easily taylor them to his need.
+
+    h2 Sound Descriptors as Physics and Graphics Controller
+
+    p Sound visualisers are in use today in software like iTunes, they generate visuals which react to sonic input. This can be taken further by allowing musicians to send more detailed sonic descriptors, by describing each sound channel separately, by providing varied high-level sonic descriptors, or by relaying plugin automation parameters or raw MIDI/OSC control information. This control data can be mapped to any scene descriptor that virtual world designers would care to expose. Having a physics engine at our disposal gives us great possibilities, such as modulating wind force according to the volume of a musical channel, or map spectral crests with object rotation speeds, or map the energy in different frequency bands to the emitter counts of different particle systems. The possibilities for experimentation and aesthetic design are endless.
+
+    p Musical note data (such as MIDI) fits well with the concept of #[i channels] which create, control and destroy #[i instances]. Indeed it inspired the abstraction in the first place. This data can be mapped to an object factory #[i channel] in the virtual environment. This factory #[i channel] creates #[i instances] (3D objects) in the virtual world for each musical note. Initial note parameters (typically channel, pitch and velocity) can be mapped to object positions, velocities, sizes, shapes, colors. Note after-touch can be used to provide further time-varying control to the factory #[i objects]. When the musical note ends the associated factory #[i object] is destroyed. These scene control mechanisms can be combined with the ones described in the previous section, giving rise to a bi-directional control flow whereby object manipulations in VR are used to control sound synthesis and the resulting sound is used to control the VR environment. Such control flows are key to creating a strong sense of immersion and finding new opportunities to create them is a driving force behind Sonosthesia.
 

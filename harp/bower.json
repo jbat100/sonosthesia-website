@@ -1,15 +1,15 @@
 {
-  "name": "hb-bootstrap",
+  "name": "sonosthesia-website",
   "version": "0.3.0",
-  "homepage": "https://github.com/jvandemo/hb-bootstrap",
   "authors": [
-    "Jurgen Van de Moere <jurgen.van.de.moere@gmail.com>"
+    "Jonathan Thorpe <dev.jonathan.thorpe@gmail.com>"
   ],
-  "description": "Harp Boilerplate of a Bootstrap website",
+  "description": "Sonosthesia Project Website",
   "keywords": [
-    "harp",
-    "boilerplate",
-    "bootstrap"
+    "sonosthesia",
+    "sound",
+    "graphics",
+    "digital"
   ],
   "license": "MIT",
   "private": true,
@@ -17,11 +17,11 @@
     "**/.*",
     "node_modules",
     "bower_components",
-    "public/bower",
     "test",
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.1.1"
+    "bootstrap": "3.3.7",
+    "prism": "1.5.1"
   }
 }
